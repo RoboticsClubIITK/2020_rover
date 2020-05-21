@@ -978,7 +978,7 @@
   <!-- ROS control plugin -->
   <gazebo>
    <plugin name="gazebo_ros_control" filename="libgazebo_ros_control.so">
-     <robotNamespace>rover_ns</robotNamespace>
+     <robotNamespace>${namespace}</robotNamespace>
      <robotSimType>gazebo_ros_control/DefaultRobotHWSim</robotSimType>
      <legacyModeNS>true</legacyModeNS>
      <odometryTopic>${namespace}/odom</odometryTopic>
@@ -1035,7 +1035,7 @@
       <bodyName>corner_lb</bodyName>
       <frameName>imu_wheel_lb_link</frameName>
       <topicName>${namespace}/imu/wheel_lb</topicName>
-      <serviceName>${namespace}/imu_service</serviceName>
+      <serviceName>${namespace}/imu_wheel_lb_service</serviceName>
       <gaussianNoise>0</gaussianNoise>
       <updateRate>30</updateRate>
       <imu>
@@ -1064,7 +1064,7 @@
       <bodyName>corner_rb</bodyName>
       <frameName>imu_wheel_rb_link</frameName>
       <topicName>${namespace}/imu/wheel_rb</topicName>
-      <serviceName>${namespace}/imu_service</serviceName>
+      <serviceName>${namespace}/imu_wheel_rb_service</serviceName>
       <gaussianNoise>0</gaussianNoise>
       <updateRate>30</updateRate>
       <imu>
@@ -1093,7 +1093,7 @@
       <bodyName>corner_lf</bodyName>
       <frameName>imu_wheel_lf_link</frameName>
       <topicName>${namespace}/imu/wheel_lf</topicName>
-      <serviceName>${namespace}/imu_service</serviceName>
+      <serviceName>${namespace}/imu_wheel_lf_service</serviceName>
       <gaussianNoise>0</gaussianNoise>
       <updateRate>30</updateRate>
       <imu>
@@ -1122,7 +1122,7 @@
       <bodyName>corner_rf</bodyName>
       <frameName>imu_wheel_rf_link</frameName>
       <topicName>${namespace}/imu/wheel_rf</topicName>
-      <serviceName>${namespace}/imu_service</serviceName>
+      <serviceName>${namespace}/imu_wheel_rf_service</serviceName>
       <gaussianNoise>0</gaussianNoise>
       <updateRate>30</updateRate>
       <imu>
@@ -1151,7 +1151,7 @@
       <bodyName>bogie_left</bodyName>
       <frameName>imu_wheel_lm_link</frameName>
       <topicName>${namespace}/imu/wheel_lm</topicName>
-      <serviceName>${namespace}/imu_service</serviceName>
+      <serviceName>${namespace}/imu_wheel_lm_service</serviceName>
       <gaussianNoise>0</gaussianNoise>
       <updateRate>30</updateRate>
       <imu>
@@ -1180,7 +1180,7 @@
       <bodyName>bogie_right</bodyName>
       <frameName>imu_wheel_rm_link</frameName>
       <topicName>${namespace}/imu/wheel_rm</topicName>
-      <serviceName>${namespace}/imu_service</serviceName>
+      <serviceName>${namespace}/imu_wheel_rm_service</serviceName>
       <gaussianNoise>0</gaussianNoise>
       <updateRate>30</updateRate>
       <imu>
