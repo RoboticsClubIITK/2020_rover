@@ -1,0 +1,7 @@
+<?xml version="1.0"?>
+<launch>
+    
+    <rosparam file="$(find find_centre)/cfg/params.yaml" command="load"/>
+
+    <node pkg="find_centre" type="findc_node" name="findc_node"/>
+</launch>
