@@ -1,6 +1,0 @@
-devel_space: /home/sanjay/rover_summer_project/src/rover/devel
-install: false
-install_space: /home/sanjay/rover_summer_project/src/rover/install
-profile: default
-source_space: /home/sanjay/rover_summer_project/src/rover/src
-workspace: /home/sanjay/rover_summer_project/src/rover
