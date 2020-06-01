@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<launch>
+	<include file="$(find rover_sim)/launch/default.launch"/>
+	<node pkg="rover_control" type="command_node" name="command_node"/>
+</launch>
