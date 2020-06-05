@@ -4,6 +4,7 @@
 #include<geometry_msgs/Twist.h>
 #include<iostream>
 #include<stdlib.h>
+#include<cmath>
 
 #define _USE_MATH_DEFINES
 #include<cmath>
@@ -71,7 +72,7 @@ int main(int argc , char** argv)
 			}
 			pub.publish(turn_msg);
 		}
-		while(turn_req - turn_z != 0);
+		while(abs(turn_req - turn_z) > 0.5);
 		turn_msg.linear.x = 0;
 		turn_msg.angular.z = 0;
 		pub.publish(turn_msg);
