@@ -10,7 +10,7 @@ namespace roboiitk::vel_control{
            public:
            void init(ros::NodeHandle& nh,ros::NodeHandle& nh_private);
            void run();
-           void velCb(const geometry_msgs::Twist& height_msg);
+           void velCb(const geometry_msgs::Twist& vel_msg);
 
            private:
            ros::Publisher pub_lfb,pub_lfm,pub_lff,pub_rgb,pub_rgm,pub_rgf,pub_jlf,pub_jlb,pub_jrf,pub_jrb;
