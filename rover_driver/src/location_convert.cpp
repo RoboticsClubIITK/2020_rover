@@ -25,7 +25,8 @@ void saw(const sensor_msgs::NavSatFixConstPtr& msg){
     global_position.x = easting;
     global_position.y = northing;
     global_position.z = msg->altitude;*/
-    //ROS_INFO_STREAM("X: "<<x<< "Y: "<<y);
+    ROS_INFO_STREAM("X: "<<x<< "Y: "<<y);
+    cout<<x<<"   "<<y;
 }
 
 int main(int argc, char **argv) {

@@ -224,4 +224,4 @@ add_executable(action src/action.cpp)
 target_link_libraries(action ${catkin_LIBRARIES})
 
 add_executable(location_convert src/location_convert.cpp)
-target_link_libraries(location_convert ${GeographicLib_LIBRARIES})
+target_link_libraries(location_convert ${GeographicLib_LIBRARIES} ${catkin_LIBRARIES})
