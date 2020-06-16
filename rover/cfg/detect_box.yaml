@@ -1,5 +1,0 @@
-publish_preprocess : true
-publish_detected_platform : true
-error_limit: 0.06
-contour_perimeter_thresh: 45
-kernel_size: 7
