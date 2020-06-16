@@ -1,0 +1,6 @@
+<launch>
+	<node pkg="rover_driver" type="action" name="speed_controller" />
+	<node pkg="rover_driver" type="velocity" name="velocity_commands" />
+	<node pkg="rover_driver" type="forward" name="forward_commands" />
+	<node pkg="rover_driver" type="turn" name="turn_commands" />
+</launch>

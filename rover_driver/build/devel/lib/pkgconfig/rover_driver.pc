@@ -1,0 +1,8 @@
+prefix=/home/pushpanshu/rover_ws/src/2020_rover-master/rover_driver/build/devel
+
+Name: rover_driver
+Description: Description of rover_driver
+Version: 0.0.0
+Cflags: 
+Libs: -L${prefix}/lib 
+Requires: 
