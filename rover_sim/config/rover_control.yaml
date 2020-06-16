@@ -33,11 +33,11 @@ rocker_left_corner_lb_controller:
   pid: {p: 1, i: 1, d: 1}
 rocker_right_corner_rb_controller:
   type: effort_controllers/JointPositionController
-  joint: rocker_right_corner_rb
+  joint: "rocker_right_corner_rb"
   pid: {p: 1, i: 1, d: 1}
 bogie_right_corner_rf_controller:
   type: effort_controllers/JointPositionController
-  joint: bogie_right_corner_rf
+  joint: "bogie_right_corner_rf"
   pid: {p: 1, i: 1, d: 1}
 
 # Arm joints
