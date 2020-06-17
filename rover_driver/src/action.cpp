@@ -43,8 +43,8 @@ int main(int argc, char **argv) {
       ros::Publisher pub =nh.advertise<geometry_msgs::Twist>("cmd_vel", 100);
 
       geometry_msgs::Point goal;
-      goal.x = 100;
-      goal.y = 100;
+      goal.x = -20.0951;
+      goal.y = 15.348;
       
       srand(time(0));
       ros::Rate rate(10);
@@ -56,7 +56,7 @@ int main(int argc, char **argv) {
             double inc_y = goal.y -pose2d.y;
             double theta_one = std::atan2(inc_y, inc_x);
             double final_theta = abs(theta_one - pose2d.theta);
-            if (final_theta > 1){
+            if (final_theta > 1.2){
                 speed.linear.x = 0.0;
                 speed.angular.z = 5;
             }

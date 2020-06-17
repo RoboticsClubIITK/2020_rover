@@ -1735,6 +1735,21 @@
         <xyzOffset>-0.066 0.182 0.079</xyzOffset>
         <rpyOffset>1.58 -0 0</rpyOffset>
       </plugin>
+<!-->
+<-->
+    <plugin name="gps_controller" filename="libhector_gazebo_ros_gps.so">
+      <alwayson>true</alwayson>
+      <updaterate>1.0</updaterate>
+      <bodyname>base_link</bodyname>
+      <topicname>/fix</topicname>
+      <velocitytopicname>/fix_velocity</velocitytopicname>
+      <drift>5.0 5.0 5.0</drift>
+      <gaussiannoise>0.1 0.1 0.1</gaussiannoise>
+      <velocitydrift>0 0 0</velocitydrift>
+      <velocitygaussiannoise>0.1 0.1 0.1</velocitygaussiannoise>
+    </plugin>
+<!-->
+<-->
       <pose frame=''>0 0 -0.033356 0.031965 0.091685 0.003569</pose>
     </model>
     <model name='aruco_visual_marker_0_pad'>

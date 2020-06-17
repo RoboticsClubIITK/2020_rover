@@ -5,28 +5,18 @@
 #include <GeographicLib/UTMUPS.hpp>
 #include <GeographicLib/Geodesic.hpp>
 #include <iostream>
-#include "navsat_conversions.h"
-#include "UTMUPS.hpp"
-//#include <GeographicLib/GeoCoords.hpp>
 using namespace GeographicLib;
 using namespace std;
 
-//geometry_msgs::Point global_position;
 int zone;
 bool northp;
 double x, y, g, k;
 void saw(const sensor_msgs::NavSatFixConstPtr& msg){
-    ROS_INFO_STREAM("Longitude value: "<< msg->longitude<<" Latitude value: "<<msg->latitude);
-    UTMUPS::Forward(msg->latitude, msg->longitude, zone, northp, x, y, g, k);           /*Yahi se dekhna abhi baar bas 2 line edit karne, ye aur niche wali, aur ek baar cmakelists bhi check karna add executable ke niche target_links mai catkin_LIBRARIES hai*/
+    //ROS_INFO_STREAM("Longitude value: "<< msg->longitude<<" Latitude value: "<<msg->latitude);
+    UTMUPS::Forward(msg->latitude, msg->longitude, zone, northp, x, y, g, k);         
     string zonestr = UTMUPS::EncodeZone(zone, northp); 
-    /*double northing, easting;
-    char zone;
-    LLtoUTM(msg->latitude, msg->longitude, northing, easting , &zone);      
-    global_position.x = easting;
-    global_position.y = northing;
-    global_position.z = msg->altitude;*/
     ROS_INFO_STREAM("X: "<<x<< "Y: "<<y);
-    cout<<x<<"   "<<y;
+    //cout<<x<<"   "<<y;
 }
 
 int main(int argc, char **argv) {

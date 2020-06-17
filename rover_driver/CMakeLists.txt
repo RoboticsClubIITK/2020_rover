@@ -217,9 +217,6 @@ target_link_libraries(velocity ${catkin_LIBRARIES})
 add_executable(turn src/turn.cpp)
 target_link_libraries(turn ${catkin_LIBRARIES})
 
-add_executable(check_odom src/check_odom.cpp)
-target_link_libraries(check_odom ${catkin_LIBRARIES})
-
 add_executable(action src/action.cpp)
 target_link_libraries(action ${catkin_LIBRARIES})
 
