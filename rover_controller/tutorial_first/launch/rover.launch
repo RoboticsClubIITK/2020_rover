@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<launch>
+    <include file="$(find husky_gazebo)/launch/spawn_husky.launch">
+        <arg name="x" value="0" />
+        <arg name="y" value="0" />
+    </include>
+
+    <node name="teleop" pkg="teleop_twist_keyboard" type="teleop_twist_keyboard.py" output="screen" />
+    <arg name="world_name" default="terrain"/>
+    <arg name="debug" default="false"/>
+    <arg name="gui" default="true"/>
+    <arg name="paused" default="true"/>
+    <arg name="verbose" default="false"/> 
+    <env name="GAZEBO_RESOURCE_PATH" value="${GAZEBO_RESOURCE_PATH}:$(find rover)/world/terrain_world"/>
+    <include file="$(find gazebo_ros)/launch/empty_world.launch">
+        <arg name="world_name" value="$(find rover)/world/terrain_world/$(arg world_name).world"/>
+        <arg name="debug" value="$(arg debug)" />
+        <arg name="paused" value="$(arg paused)" />
+        <arg name="gui" value="$(arg gui)" />
+        <arg name="verbose" value="$(arg verbose)"/>
+    </include>
+</launch>
