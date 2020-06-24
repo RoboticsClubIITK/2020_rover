@@ -168,7 +168,7 @@
           <geometry>
             <mesh>
               <scale>1 1 1</scale>
-              <uri>/home/ashwin/rover_ws/src/2020_rover/rover_sim/models/rover/meshes/body.STL</uri>
+              <uri>/home/sanjay/rover_summer_project/src/2020_rover/rover_sim/models/rover/meshes/body.STL</uri>
             </mesh>
           </geometry>
           <surface>
@@ -232,7 +232,7 @@
           <geometry>
             <mesh>
               <scale>1 1 1</scale>
-              <uri>/home/ashwin/rover_ws/src/2020_rover/rover_sim/models/rover/meshes/body.dae</uri>
+              <uri>/home/sanjay/rover_summer_project/src/2020_rover/rover_sim/models/rover/meshes/body.dae</uri>
             </mesh>
           </geometry>
           <material>
@@ -403,7 +403,7 @@
           <geometry>
             <mesh>
               <scale>1 1 1</scale>
-              <uri>/home/ashwin/rover_ws/src/2020_rover/rover_sim/models/rover/meshes/rocker_left.STL</uri>
+              <uri>/home/sanjay/rover_summer_project/src/2020_rover/rover_sim/models/rover/meshes/rocker_left.STL</uri>
             </mesh>
           </geometry>
           <surface>
@@ -425,7 +425,7 @@
           <geometry>
             <mesh>
               <scale>1 1 1</scale>
-              <uri>/home/ashwin/rover_ws/src/2020_rover/rover_sim/models/rover/meshes/rocker_left.dae</uri>
+              <uri>/home/sanjay/rover_summer_project/src/2020_rover/rover_sim/models/rover/meshes/rocker_left.dae</uri>
             </mesh>
           </geometry>
           <material>
@@ -491,7 +491,7 @@
           <geometry>
             <mesh>
               <scale>1 1 1</scale>
-              <uri>/home/ashwin/rover_ws/src/2020_rover/rover_sim/models/rover/meshes/bogie_left.STL</uri>
+              <uri>/home/sanjay/rover_summer_project/src/2020_rover/rover_sim/models/rover/meshes/bogie_left.STL</uri>
             </mesh>
           </geometry>
           <surface>
@@ -513,7 +513,7 @@
           <geometry>
             <mesh>
               <scale>1 1 1</scale>
-              <uri>/home/ashwin/rover_ws/src/2020_rover/rover_sim/models/rover/meshes/bogie_left.dae</uri>
+              <uri>/home/sanjay/rover_summer_project/src/2020_rover/rover_sim/models/rover/meshes/bogie_left.dae</uri>
             </mesh>
           </geometry>
           <material>
@@ -585,7 +585,7 @@
           <geometry>
             <mesh>
               <scale>1 1 1</scale>
-              <uri>/home/ashwin/rover_ws/src/2020_rover/rover_sim/models/rover/meshes/corner_lf.STL</uri>
+              <uri>/home/sanjay/rover_summer_project/src/2020_rover/rover_sim/models/rover/meshes/corner_lf.STL</uri>
             </mesh>
           </geometry>
           <surface>
@@ -607,7 +607,7 @@
           <geometry>
             <mesh>
               <scale>1 1 1</scale>
-              <uri>/home/ashwin/rover_ws/src/2020_rover/rover_sim/models/rover/meshes/corner_lf.dae</uri>
+              <uri>/home/sanjay/rover_summer_project/src/2020_rover/rover_sim/models/rover/meshes/corner_lf.dae</uri>
             </mesh>
           </geometry>
           <material>
@@ -679,7 +679,7 @@
           <geometry>
             <mesh>
               <scale>1 1 1</scale>
-              <uri>/home/ashwin/rover_ws/src/2020_rover/rover_sim/models/rover/meshes/wheel_lf.STL</uri>
+              <uri>/home/sanjay/rover_summer_project/src/2020_rover/rover_sim/models/rover/meshes/wheel_lf.STL</uri>
             </mesh>
           </geometry>
           <max_contacts>10</max_contacts>
@@ -701,7 +701,7 @@
           <geometry>
             <mesh>
               <scale>1 1 1</scale>
-              <uri>/home/ashwin/rover_ws/src/2020_rover/rover_sim/models/rover/meshes/wheel_lf.dae</uri>
+              <uri>/home/sanjay/rover_summer_project/src/2020_rover/rover_sim/models/rover/meshes/wheel_lf.dae</uri>
             </mesh>
           </geometry>
         </visual>
@@ -744,7 +744,7 @@
           <geometry>
             <mesh>
               <scale>1 1 1</scale>
-              <uri>/home/ashwin/rover_ws/src/2020_rover/rover_sim/models/rover/meshes/wheel_lm.STL</uri>
+              <uri>/home/sanjay/rover_summer_project/src/2020_rover/rover_sim/models/rover/meshes/wheel_lm.STL</uri>
             </mesh>
           </geometry>
           <max_contacts>10</max_contacts>
@@ -766,7 +766,7 @@
           <geometry>
             <mesh>
               <scale>1 1 1</scale>
-              <uri>/home/ashwin/rover_ws/src/2020_rover/rover_sim/models/rover/meshes/wheel_lm.dae</uri>
+              <uri>/home/sanjay/rover_summer_project/src/2020_rover/rover_sim/models/rover/meshes/wheel_lm.dae</uri>
             </mesh>
           </geometry>
         </visual>
@@ -809,7 +809,7 @@
           <geometry>
             <mesh>
               <scale>1 1 1</scale>
-              <uri>/home/ashwin/rover_ws/src/2020_rover/rover_sim/models/rover/meshes/corner_lb.STL</uri>
+              <uri>/home/sanjay/rover_summer_project/src/2020_rover/rover_sim/models/rover/meshes/corner_lb.STL</uri>
             </mesh>
           </geometry>
           <surface>
@@ -831,7 +831,7 @@
           <geometry>
             <mesh>
               <scale>1 1 1</scale>
-              <uri>/home/ashwin/rover_ws/src/2020_rover/rover_sim/models/rover/meshes/corner_lb.dae</uri>
+              <uri>/home/sanjay/rover_summer_project/src/2020_rover/rover_sim/models/rover/meshes/corner_lb.dae</uri>
             </mesh>
           </geometry>
           <material>
@@ -903,7 +903,7 @@
           <geometry>
             <mesh>
               <scale>1 1 1</scale>
-              <uri>/home/ashwin/rover_ws/src/2020_rover/rover_sim/models/rover/meshes/wheel_lb.STL</uri>
+              <uri>/home/sanjay/rover_summer_project/src/2020_rover/rover_sim/models/rover/meshes/wheel_lb.STL</uri>
             </mesh>
           </geometry>
           <max_contacts>10</max_contacts>
@@ -925,7 +925,7 @@
           <geometry>
             <mesh>
               <scale>1 1 1</scale>
-              <uri>/home/ashwin/rover_ws/src/2020_rover/rover_sim/models/rover/meshes/wheel_lb.dae</uri>
+              <uri>/home/sanjay/rover_summer_project/src/2020_rover/rover_sim/models/rover/meshes/wheel_lb.dae</uri>
             </mesh>
           </geometry>
         </visual>
@@ -968,7 +968,7 @@
           <geometry>
             <mesh>
               <scale>1 1 1</scale>
-              <uri>/home/ashwin/rover_ws/src/2020_rover/rover_sim/models/rover/meshes/rocker_right.STL</uri>
+              <uri>/home/sanjay/rover_summer_project/src/2020_rover/rover_sim/models/rover/meshes/rocker_right.STL</uri>
             </mesh>
           </geometry>
           <surface>
@@ -990,7 +990,7 @@
           <geometry>
             <mesh>
               <scale>1 1 1</scale>
-              <uri>/home/ashwin/rover_ws/src/2020_rover/rover_sim/models/rover/meshes/rocker_right.dae</uri>
+              <uri>/home/sanjay/rover_summer_project/src/2020_rover/rover_sim/models/rover/meshes/rocker_right.dae</uri>
             </mesh>
           </geometry>
           <material>
@@ -1056,7 +1056,7 @@
           <geometry>
             <mesh>
               <scale>1 1 1</scale>
-              <uri>/home/ashwin/rover_ws/src/2020_rover/rover_sim/models/rover/meshes/bogie_right.STL</uri>
+              <uri>/home/sanjay/rover_summer_project/src/2020_rover/rover_sim/models/rover/meshes/bogie_right.STL</uri>
             </mesh>
           </geometry>
           <surface>
@@ -1078,7 +1078,7 @@
           <geometry>
             <mesh>
               <scale>1 1 1</scale>
-              <uri>/home/ashwin/rover_ws/src/2020_rover/rover_sim/models/rover/meshes/bogie_right.dae</uri>
+              <uri>/home/sanjay/rover_summer_project/src/2020_rover/rover_sim/models/rover/meshes/bogie_right.dae</uri>
             </mesh>
           </geometry>
           <material>
@@ -1150,7 +1150,7 @@
           <geometry>
             <mesh>
               <scale>1 1 1</scale>
-              <uri>/home/ashwin/rover_ws/src/2020_rover/rover_sim/models/rover/meshes/corner_rf.STL</uri>
+              <uri>/home/sanjay/rover_summer_project/src/2020_rover/rover_sim/models/rover/meshes/corner_rf.STL</uri>
             </mesh>
           </geometry>
           <surface>
@@ -1172,7 +1172,7 @@
           <geometry>
             <mesh>
               <scale>1 1 1</scale>
-              <uri>/home/ashwin/rover_ws/src/2020_rover/rover_sim/models/rover/meshes/corner_rf.dae</uri>
+              <uri>/home/sanjay/rover_summer_project/src/2020_rover/rover_sim/models/rover/meshes/corner_rf.dae</uri>
             </mesh>
           </geometry>
           <material>
@@ -1244,7 +1244,7 @@
           <geometry>
             <mesh>
               <scale>1 1 1</scale>
-              <uri>/home/ashwin/rover_ws/src/2020_rover/rover_sim/models/rover/meshes/wheel_rf.STL</uri>
+              <uri>/home/sanjay/rover_summer_project/src/2020_rover/rover_sim/models/rover/meshes/wheel_rf.STL</uri>
             </mesh>
           </geometry>
           <max_contacts>10</max_contacts>
@@ -1266,7 +1266,7 @@
           <geometry>
             <mesh>
               <scale>1 1 1</scale>
-              <uri>/home/ashwin/rover_ws/src/2020_rover/rover_sim/models/rover/meshes/wheel_rf.dae</uri>
+              <uri>/home/sanjay/rover_summer_project/src/2020_rover/rover_sim/models/rover/meshes/wheel_rf.dae</uri>
             </mesh>
           </geometry>
         </visual>
@@ -1309,7 +1309,7 @@
           <geometry>
             <mesh>
               <scale>1 1 1</scale>
-              <uri>/home/ashwin/rover_ws/src/2020_rover/rover_sim/models/rover/meshes/wheel_rm.STL</uri>
+              <uri>/home/sanjay/rover_summer_project/src/2020_rover/rover_sim/models/rover/meshes/wheel_rm.STL</uri>
             </mesh>
           </geometry>
           <max_contacts>10</max_contacts>
@@ -1331,7 +1331,7 @@
           <geometry>
             <mesh>
               <scale>1 1 1</scale>
-              <uri>/home/ashwin/rover_ws/src/2020_rover/rover_sim/models/rover/meshes/wheel_rm.dae</uri>
+              <uri>/home/sanjay/rover_summer_project/src/2020_rover/rover_sim/models/rover/meshes/wheel_rm.dae</uri>
             </mesh>
           </geometry>
         </visual>
@@ -1374,7 +1374,7 @@
           <geometry>
             <mesh>
               <scale>1 1 1</scale>
-              <uri>/home/ashwin/rover_ws/src/2020_rover/rover_sim/models/rover/meshes/corner_rb.STL</uri>
+              <uri>/home/sanjay/rover_summer_project/src/2020_rover/rover_sim/models/rover/meshes/corner_rb.STL</uri>
             </mesh>
           </geometry>
           <surface>
@@ -1396,7 +1396,7 @@
           <geometry>
             <mesh>
               <scale>1 1 1</scale>
-              <uri>/home/ashwin/rover_ws/src/2020_rover/rover_sim/models/rover/meshes/corner_rb.dae</uri>
+              <uri>/home/sanjay/rover_summer_project/src/2020_rover/rover_sim/models/rover/meshes/corner_rb.dae</uri>
             </mesh>
           </geometry>
           <material>
@@ -1468,7 +1468,7 @@
           <geometry>
             <mesh>
               <scale>1 1 1</scale>
-              <uri>/home/ashwin/rover_ws/src/2020_rover/rover_sim/models/rover/meshes/wheel_rb.STL</uri>
+              <uri>/home/sanjay/rover_summer_project/src/2020_rover/rover_sim/models/rover/meshes/wheel_rb.STL</uri>
             </mesh>
           </geometry>
           <max_contacts>10</max_contacts>
@@ -1490,7 +1490,7 @@
           <geometry>
             <mesh>
               <scale>1 1 1</scale>
-              <uri>/home/ashwin/rover_ws/src/2020_rover/rover_sim/models/rover/meshes/wheel_rb.dae</uri>
+              <uri>/home/sanjay/rover_summer_project/src/2020_rover/rover_sim/models/rover/meshes/wheel_rb.dae</uri>
             </mesh>
           </geometry>
         </visual>
@@ -2138,7 +2138,7 @@
           <wrench>0 0 0 0 -0 0</wrench>
         </link>
       </model>
-      <model name='rover'>
+       <model name='rover'>
         <pose frame=''>-1.46113 0.211238 -0.0547 0.042773 0.14393 0.051602</pose>
         <scale>1 1 1</scale>
         <link name='body'>
@@ -2231,7 +2231,7 @@
           <acceleration>-0.316034 -0.368529 -3.31191 1.08125 0.154212 2.1831</acceleration>
           <wrench>-0.432381 -0.504202 -4.53119 0 -0 0</wrench>
         </link>
-      </model>
+      </model> 
       <model name='takeoff_zone'>
         <pose frame=''>-24.1998 27.8583 -0.692887 0 -0 0</pose>
         <scale>1 1 1</scale>
