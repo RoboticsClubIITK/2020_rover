@@ -148,7 +148,7 @@
       <elevation>0</elevation>
       <heading_deg>0</heading_deg>
     </spherical_coordinates>
-    <model name='rover'>
+    <!--model name='rover'>
       <link name='body'>
         <pose frame=''>0 0 0 0 -0 0</pose>
         <inertial>
@@ -1736,7 +1736,7 @@
         <rpyOffset>1.58 -0 0</rpyOffset>
       </plugin>
 <!-->
-<-->
+<!-->
     <plugin name="gps_controller" filename="libhector_gazebo_ros_gps.so">
       <alwayson>true</alwayson>
       <updaterate>1.0</updaterate>
@@ -1749,9 +1749,9 @@
       <velocitygaussiannoise>0.1 0.1 0.1</velocitygaussiannoise>
     </plugin>
 <!-->
-<-->
-      <pose frame=''>0 0 -0.033356 0.031965 0.091685 0.003569</pose>
-    </model>
+
+      <!--pose frame=''>0 0 -0.033356 0.031965 0.091685 0.003569</pose>
+    </model-->
     <model name='aruco_visual_marker_0_pad'>
       <link name='aruco_visual_marker_0::marker'>
         <pose frame=''>0 0 0 0 -0 0</pose>

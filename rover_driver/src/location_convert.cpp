@@ -24,7 +24,7 @@ int main(int argc, char **argv) {
     ros::init(argc, argv, "gps_value");
     ros::NodeHandle nh;
  
-    ros::Subscriber sub = nh.subscribe("fix", 100, saw);
+    ros::Subscriber sub = nh.subscribe("/fix", 100, saw);
 
     ros::Rate rate(10);
 

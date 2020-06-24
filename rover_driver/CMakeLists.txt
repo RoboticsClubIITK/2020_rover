@@ -220,5 +220,8 @@ target_link_libraries(turn ${catkin_LIBRARIES})
 add_executable(action src/action.cpp)
 target_link_libraries(action ${catkin_LIBRARIES})
 
+add_executable(target src/target.cpp)
+target_link_libraries(target ${catkin_LIBRARIES})
+
 add_executable(location_convert src/location_convert.cpp)
 target_link_libraries(location_convert ${GeographicLib_LIBRARIES} ${catkin_LIBRARIES})
