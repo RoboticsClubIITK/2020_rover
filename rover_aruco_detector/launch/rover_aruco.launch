@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<launch>
+
+<include file="$(find rover_position_control)/launch/rover_pose_control.launch"/>
+
+<node pkg="rover_aruco_detector" type="aruco_centre_node" name="aruco_centre_node" output="screen">
+   <rosparam file="$(find rover_aruco_detector)/config/aruco_centre_params.yaml" />
+</node>
+
+<node pkg="rover_aruco_detector" type="pose_estimation_node" name="pose_estimation_node" output="screen">
+   <rosparam file="$(find rover_aruco_detector)/config/pose_estimation_params.yaml" />
+</node>
+
+</launch>
