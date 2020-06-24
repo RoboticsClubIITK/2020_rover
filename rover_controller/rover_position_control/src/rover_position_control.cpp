@@ -26,7 +26,7 @@ namespace roboiitk::pose_control{
         else
         angle-=180;
         }
-        if(dist<0.2){
+        if(dist<1){
             speed=0;
             ang_vel=0;
         }
@@ -35,7 +35,7 @@ namespace roboiitk::pose_control{
             if(abs(angle)<4)
             {
                 speed=10*dist;
-                if(abs(angle)<2)
+                if(abs(angle)<3)
                 ang_vel=0;  
             }
             else
