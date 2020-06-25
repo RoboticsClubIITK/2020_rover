@@ -1,0 +1,5 @@
+<launch>
+	<node pkg="rover_aruco" type="detector_node" name="detector" />
+	<node pkg="rover_aruco" type="to_centre" name="square_centre" />
+	
+</launch>

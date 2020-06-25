@@ -32,7 +32,7 @@ void callBack(const nav_msgs::Odometry::ConstPtr msg){
     m.getRPY(roll, pitch, yaw);
     
     pose2d.theta = yaw;
-    std::cout<<yaw;
+    //std::cout<<yaw;
 }
 geometry_msgs::Point goal;
 void callBackTarget(const geometry_msgs::Point::ConstPtr msg){

@@ -16,16 +16,17 @@ void callBack(const rover_aruco::Centre& msg){
 }
 
 int main(int argc, char **argv) {
-    ros::init(argc, argv, "direction_square");
+    ros::init(argc, argv, "square_centre");
     ros::NodeHandle nh;
 
     ros::Subscriber sub = nh.subscribe("/detector/centre", 100, callBack);
-    //ros::Publisher pub =nh.advertise<geometry_msgs::Twist>("cmd_vel", 100);
+    ros::Publisher pub =nh.advertise<nav_msgs::Odometry>("/aruco_centre", 100);
 
     ros::Rate rate(10);
 
     while(ros::ok()) {
         ros::spinOnce();
+        pub.publish(centre_msg);
         rate.sleep();
     }
 }
