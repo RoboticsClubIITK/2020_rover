@@ -10,7 +10,11 @@ To launch the simulation
 To launch the all nodes of driver to move to a cetain point in plane(point to be specified in action.cpp)
   ```bash
   roslaunch rover_driver default.launch
-  ```
+  ```  
+To launch the aruco detection
+   ```bash
+   roslaunch rover_aruco default.launch
+   ```bash
 for the forward command
   ```bash
   rosrun rover_driver forward(Press Entre)-> entre the forward speed: ($required speed)
