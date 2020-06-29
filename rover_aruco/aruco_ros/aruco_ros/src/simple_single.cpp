@@ -1,38 +1,3 @@
-/*****************************
-Copyright 2011 Rafael Muñoz Salinas. All rights reserved.
-
-Redistribution and use in source and binary forms, with or without modification, are
-permitted provided that the following conditions are met:
-
-   1. Redistributions of source code must retain the above copyright notice, this list of
-      conditions and the following disclaimer.
-
-   2. Redistributions in binary form must reproduce the above copyright notice, this list
-      of conditions and the following disclaimer in the documentation and/or other materials
-      provided with the distribution.
-
-THIS SOFTWARE IS PROVIDED BY Rafael Muñoz Salinas ''AS IS'' AND ANY EXPRESS OR IMPLIED
-WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND
-FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL Rafael Muñoz Salinas OR
-CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR
-CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR
-SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON
-ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
-NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF
-ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
-
-The views and conclusions contained in the software and documentation are those of the
-authors and should not be interpreted as representing official policies, either expressed
-or implied, of Rafael Muñoz Salinas.
-********************************/
-/**
-* @file simple_single.cpp
-* @author Bence Magyar
-* @date June 2012
-* @version 0.1
-* @brief ROS version of the example named "simple" in the Aruco software package.
-*/
-
 #include <iostream>
 #include <aruco/aruco.h>
 #include <aruco/cvdrawingutils.h>
@@ -84,7 +49,7 @@ private:
 
   dynamic_reconfigure::Server<aruco_ros::ArucoThresholdConfig> dyn_rec_server;
 
-public:
+  public:
   ArucoSimple()
     : cam_info_received(false),
       nh("~"),
@@ -102,20 +67,14 @@ public:
     else      
       mDetector.setCornerRefinementMethod(aruco::MarkerDetector::LINES); 
 
-    //Print parameters of aruco marker detector:
-    ROS_INFO_STREAM("Corner refinement method: " << mDetector.getCornerRefinementMethod());
-    ROS_INFO_STREAM("Threshold method: " << mDetector.getThresholdMethod());
     double th1, th2;
     mDetector.getThresholdParams(th1, th2);
-    ROS_INFO_STREAM("Threshold method: " << " th1: " << th1 << " th2: " << th2);
     float mins, maxs;
     mDetector.getMinMaxSize(mins, maxs);
-    ROS_INFO_STREAM("Marker size min: " << mins << "  max: " << maxs);
-    ROS_INFO_STREAM("Desired speed: " << mDetector.getDesiredSpeed());
     
 
 
-    image_sub = it.subscribe("/image", 1, &ArucoSimple::image_callback, this);
+    image_sub = it.subscribe("/rover/camera/image_raw", 1, &ArucoSimple::image_callback, this);
     cam_info_sub = nh.subscribe("rover/camera/camera_info", 1, &ArucoSimple::cam_info_callback, this);
 
     image_pub = it.advertise("result", 1);
@@ -139,11 +98,6 @@ public:
     if ( reference_frame.empty() )
       reference_frame = camera_frame;
 
-    ROS_INFO("Aruco node started with marker size of %f m and marker id to track: %d",
-             marker_size, marker_id);
-    ROS_INFO("Aruco node will publish pose to TF with %s as parent and %s as child.",
-             reference_frame.c_str(), marker_frame.c_str());
-
     dyn_rec_server.setCallback(boost::bind(&ArucoSimple::reconf_callback, this, _1, _2));
   }
 
@@ -153,13 +107,7 @@ public:
   {
     std::string errMsg;
 
-    if ( !_tfListener.waitForTransform(refFrame,
-                                       childFrame,
-                                       ros::Time(0),
-                                       ros::Duration(0.5),
-                                       ros::Duration(0.01),
-                                       &errMsg)
-         )
+    if ( !_tfListener.waitForTransform(refFrame,childFrame,ros::Time(0),ros::Duration(0.5),ros::Duration(0.01),&errMsg))
     {
       ROS_ERROR_STREAM("Unable to get pose from TF: " << errMsg);
       return false;
@@ -168,9 +116,7 @@ public:
     {
       try
       {
-        _tfListener.lookupTransform( refFrame, childFrame,
-                                     ros::Time(0),                  //get latest available
-                                     transform);
+        _tfListener.lookupTransform( refFrame, childFrame,ros::Time(0),transform);
       }
       catch ( const tf::TransformException& e)
       {
@@ -185,25 +131,11 @@ public:
 
   void image_callback(const sensor_msgs::ImageConstPtr& msg)
   {
-    if ((image_pub.getNumSubscribers() == 0) &&
-        (debug_pub.getNumSubscribers() == 0) &&
-        (pose_pub.getNumSubscribers() == 0) &&
-        (transform_pub.getNumSubscribers() == 0) &&
-        (position_pub.getNumSubscribers() == 0) &&
-        (marker_pub.getNumSubscribers() == 0) &&
-        (pixel_pub.getNumSubscribers() == 0))
-    {
-      ROS_DEBUG("No subscribers, not looking for aruco markers");
-      return;
-    }
-
     static tf::TransformBroadcaster br;
     if(cam_info_received)
     {
       ros::Time curr_stamp(ros::Time::now());
       cv_bridge::CvImagePtr cv_ptr;
-      try
-      {
         cv_ptr = cv_bridge::toCvCopy(msg, sensor_msgs::image_encodings::RGB8);
         inImage = cv_ptr->image;
 
@@ -223,9 +155,7 @@ public:
 
             if ( reference_frame != camera_frame )
             {
-              getTransform(reference_frame,
-                           camera_frame,
-                           cameraToReference);
+              getTransform(reference_frame,camera_frame,cameraToReference);
             }
 
             transform = 
@@ -233,8 +163,7 @@ public:
               * static_cast<tf::Transform>(rightToLeft) 
               * transform;
 
-            tf::StampedTransform stampedTransform(transform, curr_stamp,
-                                                  reference_frame, marker_frame);
+            tf::StampedTransform stampedTransform(transform, curr_stamp,reference_frame, marker_frame);
             br.sendTransform(stampedTransform);
             geometry_msgs::PoseStamped poseMsg;
             tf::poseTFToMsg(transform, poseMsg.pose);
@@ -308,22 +237,12 @@ public:
           debug_msg.image = mDetector.getThresholdedImage();
           debug_pub.publish(debug_msg.toImageMsg());
         }
-      }
-      catch (cv_bridge::Exception& e)
-      {
-        ROS_ERROR("cv_bridge exception: %s", e.what());
-        return;
-      }
     }
   }
 
-  // wait for one camerainfo, then shut down that subscriber
   void cam_info_callback(const sensor_msgs::CameraInfo &msg)
   {
     camParam = aruco_ros::rosCameraInfo2ArucoCamParams(msg, useRectifiedImages);
-
-    // handle cartesian offset between stereo pairs
-    // see the sensor_msgs/CamaraInfo documentation for details
     rightToLeft.setIdentity();
     rightToLeft.setOrigin(
         tf::Vector3(

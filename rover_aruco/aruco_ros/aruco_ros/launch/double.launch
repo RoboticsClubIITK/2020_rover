@@ -12,7 +12,7 @@
 
     <node pkg="aruco_ros" type="double" name="aruco_simple">    
         <remap from="/rover/camera/camera_info" to="/stereo/$(arg eye)/camera_info" />
-        <remap from="/image" to="/stereo/$(arg eye)/image_rect_color" />
+        <remap from="/rover/camera/image_raw" to="/stereo/$(arg eye)/image_rect_color" />
         <param name="image_is_rectified" value="True"/>
         <param name="marker_size" value="$(arg markerSize)"/>
         <param name="marker_id1" value="$(arg marker1Id)"/>

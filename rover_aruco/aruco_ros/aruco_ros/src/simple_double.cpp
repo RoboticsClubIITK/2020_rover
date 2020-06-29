@@ -250,7 +250,7 @@ int main(int argc,char **argv)
   nh.param<bool>("image_is_rectified", useRectifiedImages, true);
   ROS_INFO_STREAM("Image is rectified: " << useRectifiedImages);
 
-  image_transport::Subscriber image_sub = it.subscribe("/image", 1, &image_callback);
+  image_transport::Subscriber image_sub = it.subscribe("/rover/camera/image_raw", 1, &image_callback);
   cam_info_sub = nh.subscribe("/rover/camera/camera_info", 1, &cam_info_callback);
 
   cam_info_received = false;

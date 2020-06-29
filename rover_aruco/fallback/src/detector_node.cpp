@@ -3,7 +3,7 @@
 #include <sensor_msgs/Image.h>
 //#include <sensor_msgs/camera_info.h>
 #include <cv_bridge/cv_bridge.h>
-#include <rover_aruco/Centre.h>
+#include <fallback/Centre.h>
 
 cv::Mat input_image;
 
@@ -37,7 +37,7 @@ int main(int argc, char** argv) {
 
     ros::Subscriber image_sub = nh.subscribe("/rover/camera/camera_info", 1, imageCallback);
 
-    ros::Publisher centre_pub = nh.advertise<rover_aruco::Centre>("detector/centre", 1);
+    ros::Publisher centre_pub = nh.advertise<fallback::Centre>("detector/centre", 1);
     ros::Publisher thresh_pub = nh.advertise<sensor_msgs::Image>("detector/thresh", 1);
     ros::Publisher contour_pub = nh.advertise<sensor_msgs::Image>("detector/contours", 1);
     ros::Publisher proc_pub = nh.advertise<sensor_msgs::Image>("detector/processed", 1);
@@ -95,7 +95,7 @@ int main(int argc, char** argv) {
         centre_x /= contour.size();
         centre_y /= contour.size();
 
-        rover_aruco::Centre centre_msg;
+        fallback::Centre centre_msg;
         centre_msg.header.stamp = ros::Time::now();
         centre_msg.x = centre_x;
         centre_msg.y = centre_y;
