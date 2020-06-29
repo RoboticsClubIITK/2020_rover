@@ -10,8 +10,8 @@ void callback(geometry_msgs::Twist velocity){
     output_linear1.data=velocity.linear.x+omega*sep/2;
     output_linear2.data=-(velocity.linear.x-omega*sep/2);
 
-    output_angular.data=velocity.angular.z;
-    output_angular2.data=-velocity.angular.z;
+    // output_angular.data=velocity.angular.z;
+    // output_angular2.data=-velocity.angular.z;
 
 }
 
@@ -36,7 +36,7 @@ ros::Publisher pub8 = nh.advertise<std_msgs::Float64>("/rover/bogie_right_corner
 ros::Publisher pub9 = nh.advertise<std_msgs::Float64>("/rover/rocker_left_corner_lb_controller/command",10);
 ros::Publisher pub10 = nh.advertise<std_msgs::Float64>("/rover/rocker_right_corner_rb_controller/command",10);
 ros::Rate loopRate(rate);
-output_angular.data = output_angular.data*rate/60;
+//output_angular.data = output_angular.data*rate/60;
 while(ros::ok()){
 ros::spinOnce();
 pub1.publish(output_linear2);
@@ -45,10 +45,10 @@ pub3.publish(output_linear1);
 pub4.publish(output_linear1);
 pub5.publish(output_linear2);
 pub6.publish(output_linear2);
-pub7.publish(output_angular);
-pub8.publish(output_angular);
-pub9.publish(output_angular);
-pub10.publish(output_angular);
+// pub7.publish(output_angular);
+// pub8.publish(output_angular);
+// pub9.publish(output_angular);
+// pub10.publish(output_angular);
 loopRate.sleep();
 }
 return 0;}

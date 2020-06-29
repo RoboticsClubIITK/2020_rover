@@ -3,7 +3,7 @@
    <node pkg="rover_controller" type="vel_control" name="vel_control" output="screen"/>
    <!-- <node pkg="rover_controller" type="vel_input" name="vel_input" output="screen"/> -->
    <node pkg="rover_controller" type="pose_control" name="pose_control" output="screen"/>
-    <node pkg="rover_controller" type="gps_control" name="gps_control" output="screen"/>
+    <!-- <node pkg="rover_controller" type="gps_control" name="gps_control" output="screen"/> -->
    <rosparam file="$(find rover_controller)/config/params.yaml"/>
      
    <arg name="rover_name" default="rover"/>

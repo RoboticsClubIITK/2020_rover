@@ -5,7 +5,9 @@
 #include<geometry_msgs/Pose.h>
 #include<nav_msgs/Odometry.h>
 #include<tf/transform_datatypes.h>
-
+#include<iostream>
+#include<math.h>
+using namespace std;
 geometry_msgs::Pose target_pos;
 geometry_msgs::Pose current_pos;
 
@@ -32,6 +34,11 @@ double getyaw(){
     tf::Matrix3x3 rot(q);
     double roll,pitch,yaw;
     rot.getRPY(roll,pitch,yaw);
+    //return yaw;
+    if(current_pos.position.x<target_pos.position.x){
+        if(yaw>0) yaw -= M_PI;
+        else yaw += M_PI;
+    }
     return yaw;
 }
 int main(int argc, char** argv){
@@ -50,13 +57,26 @@ float theta;
 
 while(ros::ok()){
     ros::spinOnce();
-    double dist = (current_pos.position.x- target_pos.position.x)*(current_pos.position.x- target_pos.position.x) + (current_pos.position.y- target_pos.position.y)*(current_pos.position.y- target_pos.position.y);
+    
+
+    double dist = sqrt((current_pos.position.x- target_pos.position.x)*(current_pos.position.x- target_pos.position.x) + (current_pos.position.y- target_pos.position.y)*(current_pos.position.y- target_pos.position.y));
     double yaw=getyaw();
-    theta=atan((target_pos.orientation.y-current_pos.orientation.y)/(target_pos.orientation.x-current_pos.orientation.x));
+    theta=atan((target_pos.position.y-current_pos.position.y)/(target_pos.position.x-current_pos.position.x));
     float turnAngle=yaw-theta;
-    if(turnAngle>0.1) {velocity.angular.z= 20; velocity.linear.x=0;}
-    else {velocity.angular.z=0; velocity.linear.x=100; }
-    if(dist<0.01) velocity.linear.x = 0;
+    //if(turnAngle<0){turnAngle=-turnAngle;}
+    cout<<"turnangle="<<turnAngle<<"\t"<<"dist="<<dist<<"\n";
+    if(dist<1){velocity.linear.x=0;velocity.angular.z= 0;}
+    else{
+        if(abs(turnAngle)<M_PI/45){
+            velocity.linear.x=10*dist;
+            if(abs(turnAngle)<M_PI/60) velocity.angular.z= 0;
+        }
+        else{
+            velocity.linear.x=0;
+            velocity.angular.z= 100*turnAngle;
+        }
+    }
+    
     pub.publish(velocity);
     loopRate.sleep();
 }

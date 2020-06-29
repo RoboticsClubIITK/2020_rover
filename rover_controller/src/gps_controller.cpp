@@ -10,6 +10,7 @@
 #include <cmath>
 #include <exception>
 #include<sensor_msgs/NavSatFix.h>
+#include<ros/console.h>
 
 using namespace std;
 using namespace GeographicLib;
@@ -21,6 +22,8 @@ sensor_msgs::NavSatFix curr_gps;
 void callback(sensor_msgs::NavSatFix position){
     curr_gps.latitude=position.latitude;
     curr_gps.longitude=position.longitude;
+    cout<<"curr_gps.latitude="<<curr_gps.latitude<<"\t"<<"curr_gps.longitude="<<curr_gps.longitude<<"\n";
+  
   }
 
 void subCallback(nav_msgs::Odometry position){
@@ -30,6 +33,7 @@ void subCallback(nav_msgs::Odometry position){
     curr_odom.orientation.y= position.pose.pose.orientation.y;
     curr_odom.orientation.z= position.pose.pose.orientation.z;
     curr_odom.orientation.w= position.pose.pose.orientation.w;
+    cout<<"curr_odom.position.x="<<curr_odom.position.x<<"\t"<<"curr_odom.position.y="<<curr_odom.position.y<<"\n";
   }
 
 int main(int argc,char** argv){   
@@ -57,8 +61,21 @@ int main(int argc,char** argv){
       double c1,k1,c2,k2;
       UTMUPS::Forward(des_gps.latitude, des_gps.longitude, zone,northp, des_utm.position.x, des_utm.position.y,c1,k1);
       UTMUPS::Forward(curr_gps.latitude, curr_gps.longitude, zone,northp, curr_utm.position.x, curr_utm.position.y,c2,k2);
+
+      cout << fixed << setprecision(6) << " " << curr_utm.position.x << " " << curr_utm.position.y<< "\n";
+       cout << fixed << setprecision(6) << " " << curr_utm.position.x << " " << curr_utm.position.y<< "\n";
     }
-   
+  //  {
+  //     // Sample reverse calculation
+  //     string zonestr = "38n";
+  //     int zone;
+  //     bool northp;
+  //     UTMUPS::DecodeZone(zonestr, zone, northp);
+  //     double x = 444e3, y = 3688e3;
+  //     double lat, lon;
+  //     UTMUPS::Reverse(zone, northp, x, y, lat, lon);
+  //     cout << lat << " " << lon << "\n";
+  //   }
   } catch (const exception &e) {
     cerr << "Caught exception: " << e.what() << "\n";
     return 1;
