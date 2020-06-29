@@ -1,0 +1,13 @@
+# -10 for red, -20 for yellow, -30 for blue
+height: 480
+width: 640
+
+marker1: -10
+marker2: -20
+marker3: -30
+
+camera:
+  translation: [0,0,0]
+  rotation: [0,-1,0,-1,0,0,0,0,-1]
+
+maxCentreError: 120

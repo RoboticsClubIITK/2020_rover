@@ -1,0 +1,33 @@
+<launch>
+
+    <arg name="markerSize"        default="0.25"/>    <!-- in m -->
+    <arg name="eye"               default="left"/>
+    <arg name="dct_normalization" default="True" />
+    <arg name="dct_filter_size"   default="2" />
+    <arg name="marker1_frame"     default="marker_frame" />
+
+    <include file="$(find rover_position_control)/launch/rover_pose_control.launch"/>
+
+    <node pkg="aruco_detector" type="triple" name="detector">    
+        <remap from="/camera_info" to="rover/camera/camera_info" />
+        <remap from="/image" to="rover/camera/image_raw" />
+
+        <param name="image_is_rectified" value="True"/>
+        <param name="marker_size" value="$(arg markerSize)"/>
+        <param name="normalizeImage" value="$(arg dct_normalization)"/>
+        <param name="dct_components_to_remove" value="$(arg dct_filter_size)"/>
+        <param name="parent_name" value="stereo_gazebo_$(arg eye)_camera_optical_frame"/>
+        <param name="child_name1" value="$(arg marker1_frame)" />
+    </node>
+
+    <node pkg="aruco_detector" type="pose" name="aruco_pose" output="screen">
+        <rosparam file="$(find aruco_detector)/cfg/aruco.yaml" />
+        <!--<rosparam file="$(env HOME)/.ros/camera_info/ocam.yaml"/>-->
+        <remap from="odom" to="rover/odom"/>
+        <remap from="pose1" to="detector/pose1"/>
+        <!--<remap from="pose2" to="detector/pose2"/>
+        <remap from="pose3" to="detector/pose3"/>
+        <remap from="flags" to="detector/flags"/>-->
+    </node>
+
+</launch>
