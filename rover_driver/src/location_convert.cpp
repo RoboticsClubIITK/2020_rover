@@ -26,7 +26,7 @@ int main(int argc, char **argv) {
  
     ros::Subscriber sub = nh.subscribe("/fix", 100, saw);
 
-    ros::Rate rate(10);
+    ros::Rate rate(100);
 
     while(ros::ok()) {
         ros::spinOnce();

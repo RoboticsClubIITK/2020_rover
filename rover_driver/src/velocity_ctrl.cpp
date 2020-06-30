@@ -22,7 +22,7 @@ int main(int argc, char **argv) {
       ros::Publisher pub =nh.advertise<geometry_msgs::Twist>("rover_cmd", 100);
 
       srand(time(0));
-      ros::Rate rate(10);
+      ros::Rate rate(100);
 
         while(ros::ok()) {
            ros::spinOnce();

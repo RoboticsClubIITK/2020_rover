@@ -22,7 +22,7 @@ int main(int argc, char **argv) {
     ros::Subscriber sub = nh.subscribe("/detector/centre", 100, callBack);
     ros::Publisher pub =nh.advertise<nav_msgs::Odometry>("/aruco_centre", 100);
 
-    ros::Rate rate(10);
+    ros::Rate rate(100);
 
     while(ros::ok()) {
         ros::spinOnce();

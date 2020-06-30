@@ -67,10 +67,10 @@ int main(int argc, char **argv) {
             double final_theta =  pose2d.theta - theta_one ;
             if (final_theta > 0.1){
                 speed.linear.x = 0.0;
-                speed.angular.z = 10;
+                speed.angular.z = 1000;
             }
             else{
-                speed.linear.x = 10000.0;
+                speed.linear.x = 10;
                 speed.angular.z = 0.0;
             }
 

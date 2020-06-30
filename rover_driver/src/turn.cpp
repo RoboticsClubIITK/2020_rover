@@ -33,7 +33,7 @@ int main(int argc, char **argv) {
 
       srand(time(0));
 
-      ros::Rate rate(10);
+      ros::Rate rate(100);
 
       while(ros::ok()) {
            ros::spinOnce();

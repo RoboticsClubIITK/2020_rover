@@ -2260,9 +2260,6 @@
       <light name='directional_light_1'>
         <pose frame=''>0 20 20 0.1 0.1 0</pose>
       </light>
-      <light name='sun'>
-        <pose frame=''>0 0 10 0 -0 0</pose>
-      </light>
     </state>
     <gui fullscreen='0'>
       <camera name='user_camera'>

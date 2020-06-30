@@ -2,16 +2,12 @@
 #include <stdlib.h> 
 #include <math.h>
 #include <iostream>
-#include <geometry_msgs/Twist.h>
 #include <geometry_msgs/Point.h>
-#include <geometry_msgs/Pose.h>
 #include <nav_msgs/Odometry.h>
-#include <geometry_msgs/Pose2D.h>
 #include <geometry_msgs/Vector3Stamped.h>
-#include <aruco_ros/Centre.h>
 #include <nav_msgs/Odometry.h>
 
-aruco_ros::Centre centre_msg;
+geometry_msgs::Point centre_msg;
 void callBack(const geometry_msgs::Vector3Stamped& msg){
     centre_msg.x = msg.vector.x;
     centre_msg.y = msg.vector.y;
