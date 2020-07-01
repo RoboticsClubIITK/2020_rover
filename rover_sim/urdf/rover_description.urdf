@@ -69,7 +69,7 @@
   <joint name="scan_joint" type="fixed">
     <parent link="body"/>
     <child link="base_scan"/>
-    <origin xyz="-.075 0.03 -.5125" rpy="0 0 3.14"/>
+    <origin xyz="-.075 0.03 -.5125" rpy="0.05 0.05 3.14"/>
   </joint>
   <gazebo reference="base_scan">
     <sensor type="ray" name="lds_lfcd_sensor">
