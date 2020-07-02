@@ -8,17 +8,23 @@
 #include <math.h>
 #include <iostream>
 #include <geometry_msgs/Pose2D.h>
+#include "sensor_msgs/LaserScan.h"
+#include "geometry_msgs/Twist.h"
+
+float min_range,min_range_angle;
+float range[360];
+void callBackAvoid(const sensor_msgs::LaserScan::ConstPtr& msga){
+    min_range = msga->ranges[0];
+	min_range_angle = 0;
+    
+    for(int j=0;j<360;j++){
+        range[j] = msga->ranges[j];
+    }
+}
 
 
-//double x = 0.0;
-//double y = 0.0 ;
-//double theta = 0.0;
 geometry_msgs::Pose2D pose2d;
-
 void callBack(const nav_msgs::Odometry::ConstPtr msg){
-    //x = msg.pose.pose.position.x;
-    //y = msg.pose.pose.position.y;
-    //geometry_msgs::Pose2D pose2d;
     pose2d.x = msg->pose.pose.position.x;
     pose2d.y = msg->pose.pose.position.y;
     
@@ -32,7 +38,6 @@ void callBack(const nav_msgs::Odometry::ConstPtr msg){
     m.getRPY(roll, pitch, yaw);
     
     pose2d.theta = yaw;
-    //std::cout<<yaw;
 }
 geometry_msgs::Point goal;
 void callBackTarget(const geometry_msgs::Point::ConstPtr msg){
@@ -44,13 +49,10 @@ int main(int argc, char **argv) {
       ros::init(argc, argv, "speed_controller");
       ros::NodeHandle nh;
 
+      ros::Subscriber sub2 = nh.subscribe("/rover/scan", 100, callBackAvoid);
       ros::Subscriber sub = nh.subscribe("/rover/odom", 100, callBack);
       ros::Subscriber sub1 = nh.subscribe("/rover/target", 100, callBackTarget);
       ros::Publisher pub =nh.advertise<geometry_msgs::Twist>("cmd_vel", 100);
-
-      //geometry_msgs::Point goal;
-      //goal.x = -20.0951;
-      //goal.y = 15.348;
       
       srand(time(0));
       ros::Rate rate(100);
@@ -65,18 +67,36 @@ int main(int argc, char **argv) {
             double distance = sqrt(inc_x*inc_x + inc_y*inc_y);
             double theta_one = std::atan(inc_y/inc_x);
             double final_theta =  pose2d.theta - theta_one ;
-            if (final_theta > 0.1){
-                speed.linear.x = 0.0;
-                speed.angular.z = 1000;
-            }
-            else{
-                speed.linear.x = 10;
-                speed.angular.z = 0.0;
-            }
 
-            if(distance <0.01){
-                speed.linear.x = 0;
-            }
+//obstacle_avoidance
+            for(int j=0;j<360;j++) //increment by one degree
+	        {
+	  	        if(range[j]<min_range)
+		        {
+			        min_range=range[j];
+			        min_range_angle=j/2;
+		        }
+	        }
+            if(min_range<=1.5)
+	        {
+			    speed.angular.z=100.0;
+			    speed.linear.x=0;
+	        }
+	        else
+	        {
+		        if (final_theta > 0.1){
+                    speed.linear.x = 0.0;
+                    speed.angular.z = 100;
+                }
+                else{
+                    speed.linear.x = 20;
+                    speed.angular.z = 0.0;
+                }
+
+                if(distance <0.01){
+                    speed.linear.x = 0;
+                }
+	        }
             pub.publish(speed);
             rate.sleep();
         }

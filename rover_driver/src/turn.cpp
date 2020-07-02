@@ -5,11 +5,8 @@
 #include <stdlib.h> 
 double angular_z;
 
-
 void see(const geometry_msgs::Twist& msg)
 {
-     //ROS_INFO_STREAM("Subscriber velocities:"<<" linear="<<msg.linear.x<<" angular="<<msg.angular.z);
-     //linear_x = msg.linear.x;
      angular_z = msg.angular.z;
      std::cout<<msg.angular.z;
 } 
@@ -17,12 +14,8 @@ void see(const geometry_msgs::Twist& msg)
 int main(int argc, char **argv) {
       ros::init(argc, argv, "turn_commands");
       ros::NodeHandle nh;
- 
-      //std::cout<<"Entre you turn angle: ";
-      //std::cin>>angular_z;
 
-      
-      ros::Subscriber sub = nh.subscribe("rover_cmd", 100, see);
+      ros::Subscriber sub = nh.subscribe("cmd_vel", 100, see);
 
       ros::Publisher pub1=nh.advertise<std_msgs::Float64>("rover/corner_lf_wheel_lf_controller/command", 100);
       ros::Publisher pub2=nh.advertise<std_msgs::Float64>("rover/bogie_left_wheel_lm_controller/command", 100);

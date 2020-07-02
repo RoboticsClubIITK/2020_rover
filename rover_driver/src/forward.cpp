@@ -7,21 +7,14 @@ double linear_x;
 
 void see(const geometry_msgs::Twist& msg)
 {
-     //ROS_INFO_STREAM("Subscriber velocities:"<<" linear="<<msg.linear.x<<" angular="<<msg.angular.z);
      linear_x = msg.linear.x;
      std::cout<<msg.linear.x;
 } 
 int main(int argc, char **argv) {
-      //Initializes ROS, and sets up a node
       ros::init(argc, argv, "forward_commands");
       ros::NodeHandle nh;
- 
-      //std::cout<<"Entre you linear velocity: ";
-      //std::cin>>linear_x;
 
-
-      ros::Subscriber sub = nh.subscribe("rover_cmd", 100, see);
-      //ros::spinOnce();
+      ros::Subscriber sub = nh.subscribe("cmd_vel", 100, see);
       ros::Publisher pub1=nh.advertise<std_msgs::Float64>("rover/corner_lf_wheel_lf_controller/command", 100);
       ros::Publisher pub2=nh.advertise<std_msgs::Float64>("rover/bogie_left_wheel_lm_controller/command", 100);
       ros::Publisher pub3=nh.advertise<std_msgs::Float64>("rover/corner_lb_wheel_lb_controller/command", 100);

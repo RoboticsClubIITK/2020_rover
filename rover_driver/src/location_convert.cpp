@@ -12,11 +12,9 @@ int zone;
 bool northp;
 double x, y, g, k;
 void saw(const sensor_msgs::NavSatFixConstPtr& msg){
-    //ROS_INFO_STREAM("Longitude value: "<< msg->longitude<<" Latitude value: "<<msg->latitude);
     UTMUPS::Forward(msg->latitude, msg->longitude, zone, northp, x, y, g, k);         
     string zonestr = UTMUPS::EncodeZone(zone, northp); 
     ROS_INFO_STREAM("X: "<<x<< "Y: "<<y);
-    //cout<<x<<"   "<<y;
 }
 
 int main(int argc, char **argv) {

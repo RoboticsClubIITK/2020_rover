@@ -1,8 +1,9 @@
 <launch>
 	<node pkg="rover_driver" type="action" name="speed_controller" />
-	<node pkg="rover_driver" type="velocity" name="velocity_commands" />
+	<!--node pkg="rover_driver" type="velocity" name="velocity_commands" /-->
 	<node pkg="rover_driver" type="forward" name="forward_commands" />
 	<node pkg="rover_driver" type="turn" name="turn_commands" />
 	<node pkg="rover_driver" type="location_convert" name="gps_value" />
 	<node pkg="rover_driver" type="target" name="target_rover" />
+	<!--node pkg="rover_driver" type="obstacle_avoidance" name="obstacle_avoidance" /-->
 </launch>

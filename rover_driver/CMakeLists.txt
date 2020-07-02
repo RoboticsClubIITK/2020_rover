@@ -211,8 +211,8 @@ include_directories(
 add_executable(forward src/forward.cpp)
 target_link_libraries(forward ${catkin_LIBRARIES})
 
-add_executable(velocity src/velocity_ctrl.cpp)
-target_link_libraries(velocity ${catkin_LIBRARIES})
+#add_executable(velocity src/velocity_ctrl.cpp)
+#target_link_libraries(velocity ${catkin_LIBRARIES})
 
 add_executable(turn src/turn.cpp)
 target_link_libraries(turn ${catkin_LIBRARIES})
@@ -222,6 +222,9 @@ target_link_libraries(action ${catkin_LIBRARIES})
 
 add_executable(target src/target.cpp)
 target_link_libraries(target ${catkin_LIBRARIES})
+
+#add_executable(obstacle_avoidance src/obstacle_avoidance.cpp)
+#target_link_libraries(obstacle_avoidance ${catkin_LIBRARIES})
 
 add_executable(location_convert src/location_convert.cpp)
 target_link_libraries(location_convert ${GeographicLib_LIBRARIES} ${catkin_LIBRARIES})

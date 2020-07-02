@@ -7,10 +7,10 @@
 #include <geometry_msgs/Pose.h>
 #include <nav_msgs/Odometry.h>
 #include <geometry_msgs/Pose2D.h>
-#include <rover_aruco/Centre.h>
+#include <fallback/Centre.h>
 
-rover_aruco::Centre centre_msg;
-void callBack(const rover_aruco::Centre& msg){
+fallback::Centre centre_msg;
+void callBack(const fallback::Centre& msg){
     centre_msg.x = msg.x;
     centre_msg.y = msg.y;
 }
