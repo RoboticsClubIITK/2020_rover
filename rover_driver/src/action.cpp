@@ -10,7 +10,7 @@
 #include <geometry_msgs/Pose2D.h>
 #include "sensor_msgs/LaserScan.h"
 #include "geometry_msgs/Twist.h"
-
+using namespace std ;
 float min_range,min_range_angle;
 float range[360];
 void callBackAvoid(const sensor_msgs::LaserScan::ConstPtr& msga){
@@ -67,36 +67,69 @@ int main(int argc, char **argv) {
             double distance = sqrt(inc_x*inc_x + inc_y*inc_y);
             double theta_one = std::atan(inc_y/inc_x);
             double final_theta =  pose2d.theta - theta_one ;
-
-//obstacle_avoidance
+            //cout<<final_theta<<endl;
+            //obstacle_avoidance
+            int k;
             for(int j=0;j<360;j++) //increment by one degree
 	        {
 	  	        if(range[j]<min_range)
 		        {
 			        min_range=range[j];
+                    //cout<<"min_range"<<min_range<<endl;
 			        min_range_angle=j/2;
+                    k=j;
 		        }
 	        }
-            if(min_range<=1.5)
+
+            
+                    
+            if(min_range<=1.7)
 	        {
-			    speed.angular.z=100.0;
-			    speed.linear.x=0;
+                if(k<10 || k>345){
+                    speed.linear.x = 50;
+                    speed.angular.z = 0;
+                    cout<<"Linear Speed at End of Obstacle: "<<speed.linear.x<<endl;
+                    cout<<"Angular Speed at End of Obstacle: "<<speed.angular.z<<endl;
+                }
+                else {
+                    if(min_range_angle<90){
+                        speed.angular.z=-20.0;
+			            speed.linear.x=0;
+                    }
+                    else{
+                        speed.angular.z=20.0;
+			            speed.linear.x=0;
+                    }
+                    cout<<"Linear Speed due to obstacle: "<<speed.linear.x<<endl; 
+                    cout<<"Angular Speed due to obstacle: "<<speed.angular.z<<endl;     
+                }
 	        }
 	        else
 	        {
-		        if (final_theta > 0.1){
+
+                cout<<"FInal theta : "<<final_theta<<endl;
+                /*---------------------*/ //towards flag
+		        if (final_theta > 0.07){
                     speed.linear.x = 0.0;
-                    speed.angular.z = 100;
+                    speed.angular.z = 20;
+                }
+                else if(final_theta < -0.07){
+                    speed.linear.x = 0.0;
+                    speed.angular.z = -20;
                 }
                 else{
-                    speed.linear.x = 20;
+                    speed.linear.x = 50;
                     speed.angular.z = 0.0;
                 }
+                /*---------------------*/
 
                 if(distance <0.01){
                     speed.linear.x = 0;
                 }
+                cout<<"Linear Speed due to goal: "<<speed.linear.x<<endl;
+                cout<<"Angular Speed due to goal: "<<speed.angular.z<<endl;
 	        }
+            
             pub.publish(speed);
             rate.sleep();
         }
