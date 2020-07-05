@@ -30,6 +30,7 @@ namespace roboiitk::pose_estimation {
     void PoseEstimator::setImgVec(const float& x, const float& y) {
         img_vec_(0) = x;
         img_vec_(1) = y;
+        img_vec_(2) = 1;
     }
 
     void PoseEstimator::setQuaternion(const nav_msgs::Odometry& odom) {
@@ -57,7 +58,7 @@ namespace roboiitk::pose_estimation {
         glob_coord_ = calculateGlobCoord(centre_coord_.x, centre_coord_.y, centre_coord_.z);
         global_coord_.x = glob_coord_(0);
         global_coord_.y = glob_coord_(1);
-        global_coord_.z = 0;//glob_coord_(2);
+        global_coord_.z = glob_coord_(2);
         glob_coord_pub_.publish(global_coord_);
     }
 

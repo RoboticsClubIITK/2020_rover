@@ -1,25 +1,23 @@
-#include <rover_vel_control/vel_cntrl.hpp>
+#include <rover_aruco_detector/aruco_marker_detect.hpp>
 
-using namespace roboiitk::vel_control;
+using namespace roboiitk::ArucoDetect;
 
 int main(int argc,char** argv)
 {
-    ros::init(argc,argv,"rover_vel_node");
+    ros::init(argc,argv,"aruco_centre_node");
     ros::NodeHandle nh;
     ros::NodeHandle nh_private("~");
+    
+    ArucoDetect aruco_detect;
 
-    rover rover;
-
-    rover.init(nh,nh_private);
+    aruco_detect.init(nh,nh_private);
 
     ros::Rate loopRate(10);
 
     while(ros::ok())
     {
-        rover.run();
         ros::spinOnce();
         loopRate.sleep();
     }
     return 0;
-
 }

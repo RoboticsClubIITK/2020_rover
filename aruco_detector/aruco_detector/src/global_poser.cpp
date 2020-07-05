@@ -8,19 +8,16 @@
 #include <tf/transform_datatypes.h>
 
 
-geometry_msgs::Pose aruco_pose;
+geometry_msgs::PoseStamped aruco_pose;
 geometry_msgs::Point global_coord_;
 nav_msgs::Odometry odom;
 Eigen::Matrix3f camToRover, RoverToCam;
 Eigen::Vector3f tCam;
-int imageID; int types[3] = {0,0,0};
-double maxCentreError;
-int height, width;
 
-void poseCallback(const geometry_msgs::Pose& msg){aruco_pose = msg;}
+void poseCallback(const geometry_msgs::PoseStamped& msg){aruco_pose = msg;}
 void odomCallback(const nav_msgs::Odometry& msg){odom = msg;}
 
-Eigen::Vector3f convertPose(geometry_msgs::Pose msg)
+Eigen::Vector3f convertPose(geometry_msgs::PoseStamped msg)
 {
     Eigen::Matrix3f RoverToGlob;
 
@@ -28,7 +25,7 @@ Eigen::Vector3f convertPose(geometry_msgs::Pose msg)
     Eigen::Quaternionf quat = Eigen::Quaternionf(q1.w(), q1.x(), q1.y(), q1.z());
     RoverToGlob = quat.toRotationMatrix();
     
-    Eigen::Vector3f camCoord(msg.position.x, msg.position.y, msg.position.z - odom.pose.pose.position.z);
+    Eigen::Vector3f camCoord(msg.pose.position.x, msg.pose.position.y, msg.pose.position.z - odom.pose.pose.position.z);
     Eigen::Vector3f RoverCoord = camToRover*camCoord + tCam;
     Eigen::Vector3f globCoord = RoverToGlob*RoverCoord;
 
@@ -43,14 +40,6 @@ int main(int argc, char **argv)
 {
     ros::init(argc, argv, "aruco_pose");
     ros::NodeHandle nh, ph("~");
-
-    /*ph.getParam("marker1", types[0]);
-    ph.getParam("marker2", types[1]);
-    ph.getParam("marker3", types[2]);*/
-
-    //ph.getParam("maxCentreError", maxCentreError);
-    //ph.getParam("width", width);
-    //ph.getParam("height", height);
 
     std::vector<double> tempList;
     ph.getParam("camera/translation", tempList);
@@ -70,7 +59,7 @@ int main(int argc, char **argv)
     }
     camToRover = RoverToCam.inverse();
 
-    ros::Subscriber pose_sub = nh.subscribe("pose1", 1, poseCallback);
+    ros::Subscriber pose_sub = nh.subscribe("pose_convert", 1, poseCallback);
     ros::Subscriber odom_sub = nh.subscribe("odom", 1, odomCallback);
 
     ros::Publisher aruco_pose_pub = nh.advertise<geometry_msgs::Point >("aruco_poses", 1);

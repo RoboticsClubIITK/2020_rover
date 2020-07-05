@@ -54,7 +54,7 @@ add_executable(double src/simple_double.cpp
 add_dependencies(double ${PROJECT_NAME}_gencfg)
 target_link_libraries(double ${catkin_LIBRARIES} ${OpenCV_LIBRARIES})
 
-add_executable(triple src/simple_triple.cpp
+add_executable(triple src/simple_rover_aruco.cpp
                       src/aruco_ros_utils.cpp)
 add_dependencies(triple ${PROJECT_NAME}_gencfg)
 target_link_libraries(triple ${catkin_LIBRARIES} ${OpenCV_LIBRARIES})
