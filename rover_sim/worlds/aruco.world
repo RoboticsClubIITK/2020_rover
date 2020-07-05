@@ -148,6 +148,7 @@
       <elevation>0</elevation>
       <heading_deg>0</heading_deg>
     </spherical_coordinates>
+<<<<<<< HEAD
     <model name='rover'>
       <link name='body'>
         <pose frame=''>0 0 0 0 -0 0</pose>
@@ -1829,6 +1830,8 @@
           <wrench>-0.432381 -0.504202 -4.53119 0 -0 0</wrench>
         </link>
     </model>
+=======
+>>>>>>> upstream/master
     <model name='aruco_visual_marker_0_pad'>
       <link name='aruco_visual_marker_0::marker'>
         <pose frame=''>0 0 0 0 -0 0</pose>
