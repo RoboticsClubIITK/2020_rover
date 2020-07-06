@@ -1,0 +1,5 @@
+obstacle_min_distance_threshold: 2.5
+angle_threshold_low: 10
+angle_threshold_high: 340
+distance_threshold: 0.1
+heading_threshold: 0.1
