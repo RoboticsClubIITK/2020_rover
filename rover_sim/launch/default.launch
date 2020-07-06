@@ -1,6 +1,7 @@
 <?xml version="1.0"?>
 <launch>
     <arg name="rover_name" default="rover"/>
+    <arg name="mav_name" default="firefly"/>
     <arg name="world" default="$(find rover_sim)/worlds/obstacle.world"/>
     <arg name="paused" default="false"/>
 	<arg name="use_sim_time" default="true"/>
@@ -16,7 +17,7 @@
 		<arg name="world_name" value="$(arg world)"/>
 		<arg name="debug" value="$(arg debug)" />
         <arg name="gui" value="$(arg gui)" />
-        <arg name="verbose" default="true"/>
+        <arg name="verbose" default="$(arg verbose)"/>
 		<arg name="paused" value="$(arg paused)"/>
 		<arg name="use_sim_time" value="$(arg use_sim_time)"/>
 		<arg name="headless" value="$(arg headless)"/>
@@ -24,5 +25,9 @@
 
     <include file="$(find rover_sim)/launch/spawn_rover.launch">
         <arg name="rover_name" default="$(arg rover_name)"/>
+    </include>
+
+    <include file="$(find rover_sim)/launch/spawn_mav.launch">
+        <param name="mav_name" value="$(arg mav_name)"/>
     </include>
 </launch>
