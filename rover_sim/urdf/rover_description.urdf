@@ -74,7 +74,7 @@
   <gazebo reference="base_scan">
     <sensor type="ray" name="lds_lfcd_sensor">
       <pose>0 0 0 0 0 3.14</pose>
-      <visualize>true</visualize>
+      <visualize>false</visualize>
       <update_rate>5</update_rate>
       <ray>
         <scan>
@@ -1207,7 +1207,7 @@
     <alwaysOn>1</alwaysOn>
     <updateRate>10.0</updateRate>
     <bodyName>bogie_right</bodyName>
-    <topicName>/fix</topicName>
+    <topicName>fix</topicName>
     <velocityTopicName>fix_velocity</velocityTopicName>
     <drift>5.0 5.0 5.0</drift>
     <gaussianNoise>0.1 0.1 0.1</gaussianNoise>
