@@ -1,5 +1,6 @@
 <sdf version='1.6'>
   <world name='default'>
+    <plugin name='ros_interface_plugin' filename='librotors_gazebo_ros_interface_plugin.so'/>
     <scene>
       <background>202 150 66 1</background>
       <ambient>0.4 0.4 0.4 1</ambient>
@@ -7,8 +8,7 @@
     </scene>
     <physics name='default_physics' default='0' type='ode'>
       <max_step_size>0.0185</max_step_size>
-      <real_time_factor>1</real_time_factor>
-      <real_time_update_rate>1000</real_time_update_rate>
+      <real_time_update_rate>100</real_time_update_rate>
     </physics>
     <light name='directional_light_1' type='directional'>
       <pose frame=''>0 20 20 0.1 0.1 0</pose>
@@ -137,10 +137,6 @@
       </link>
       <pose frame=''>-48.502 1.5 -2.1 0 -0 0</pose>
     </model>
-    <gravity>0 0 -3.711</gravity>
-    <magnetic_field>6e-06 2.3e-05 -4.2e-05</magnetic_field>
-    <atmosphere type='adiabatic'/>
-    <wind/>
     <spherical_coordinates>
       <surface_model>EARTH_WGS84</surface_model>
       <latitude_deg>0</latitude_deg>
@@ -929,10 +925,6 @@
       <pose frame=''>-85.7978 27.9105 0 0 -0 0</pose>
     </model>
     <state world_name='default'>
-      <sim_time>5161 888500000</sim_time>
-      <real_time>493 811530586</real_time>
-      <wall_time>1593624807 203683086</wall_time>
-      <iterations>279021</iterations>
       <model name='crater'>
         <pose frame=''>-48.502 1.5 -2.1 0 -0 0</pose>
         <scale>1 1 1</scale>
@@ -1060,12 +1052,5 @@
         <pose frame=''>0 0 10 0 -0 0</pose>
       </light>
     </state>
-    <gui fullscreen='0'>
-      <camera name='user_camera'>
-        <pose frame=''>47.7924 -25.0751 62.8836 0 0.311643 2.6482</pose>
-        <view_controller>orbit</view_controller>
-        <projection_type>perspective</projection_type>
-      </camera>
-    </gui>
   </world>
 </sdf>
