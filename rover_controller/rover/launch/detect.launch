@@ -1,6 +1,0 @@
-<?xml version="1.0"?>
-<launch>
-<node pkg="rover" type="detect_box_node" name="detect_box_node" output="screen">
-<rosparam file="$(find rover)/cfg/detect_box.yaml" />
-</node>
-</launch>
