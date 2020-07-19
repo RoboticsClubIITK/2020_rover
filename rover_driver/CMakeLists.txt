@@ -223,6 +223,9 @@ target_link_libraries(action ${catkin_LIBRARIES})
 add_executable(target src/target.cpp)
 target_link_libraries(target ${catkin_LIBRARIES})
 
+add_executable(waypointListen src/waypointListen.cpp)
+target_link_libraries(waypointListen ${catkin_LIBRARIES})
+
 #add_executable(obstacle_avoidance src/obstacle_avoidance.cpp)
 #target_link_libraries(obstacle_avoidance ${catkin_LIBRARIES})
 
