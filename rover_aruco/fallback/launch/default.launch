@@ -1,5 +1,0 @@
-<launch>
-	<node pkg="fallback" type="detector_node" name="detector" />
-	<node pkg="fallback" type="to_centre" name="square_centre" />
-	
-</launch>
