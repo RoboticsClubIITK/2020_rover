@@ -1,5 +1,6 @@
 # 2020_rover
 Summer Project 2020
+<<<<<<< HEAD
 # To run the project use:
 
 To launch the simulation
@@ -23,6 +24,9 @@ for turn command
   ```bash
   rosrun rover_driver turn(Press Entre)-> entre the turn speed: ($required speed)
   ```
+=======
+
+>>>>>>> 192e2ac5b02d5d3ed07c7ccc4667e02b1afdfdcf
 ## Setup and Installation
 
 Ensure that you have a working ROS Melodic installation.

@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 #include "voxblox_planner/voxblox_planner.hpp"
 
 namespace rover::planner {
@@ -32,10 +33,34 @@ bool PlannerNode::publishPathCallback(std_srvs::EmptyRequest& req, std_srvs::Emp
     //path_pub_.publish();
     return true;
     
+=======
+#include <voxblox_planner/voxblox_planner.hpp>
+
+namespace rover::planner {
+
+PlannerNode::PlannerNode(ros::NodeHandle& nh, ros::NodeHandle& nh_private)
+    : sampler_()
+    , server_(nh, nh_private) {
+    // create all your pubs, subs, servers etc using the input nodehandles
+}
+
+void PlannerNode::plannerServiceCallback(mav_planning_msgs::PlannerServiceRequest& req, mav_planning_msgs::PlannerServiceResponse& resp) {
+    Eigen::Vector3d start, end;
+    // get start and end point from request
+
+    // create graph function
+    // find path function
+    // shorten path function
+}
+
+void PlannerNode::publishPathCallback(std_srvs::EmptyRequest& req, std_srvs::EmptyResponse& resp) {
+    // publish generated path
+>>>>>>> 192e2ac5b02d5d3ed07c7ccc4667e02b1afdfdcf
 }
 
 void PlannerNode::createGraph(const Eigen::Vector3d& start, const Eigen::Vector3d& end) {
     // clear existing graph_
+<<<<<<< HEAD
     graph_.clear();
     // push back start and end nodes into graph
     sampler_.init(start, end);
@@ -77,10 +102,19 @@ void PlannerNode::createGraph(const Eigen::Vector3d& start, const Eigen::Vector3
             }
         }
     }
+=======
+    // push back start and end nodes into graph
+    // initialize the sampler and use it to get samples
+    // create nodes from sampled positions and push back into graph
+    // insert all node positions and ids into rtree
+    // query rtree for k neighbours of each node
+    // insert neighbours and return
+>>>>>>> 192e2ac5b02d5d3ed07c7ccc4667e02b1afdfdcf
 }
 
 void PlannerNode::findPath(const uint& start_index, const uint& end_index) {
     // clear existing curr_path_
+<<<<<<< HEAD
     if (graph_.empty()) {
         return;
     }
@@ -127,12 +161,17 @@ void PlannerNode::findPath(const uint& start_index, const uint& end_index) {
         }
     }
 
+=======
+    // implement A*, keep track of parents in a separate vector
+    // once end node is reached, backtrack and push all nodes into path
+>>>>>>> 192e2ac5b02d5d3ed07c7ccc4667e02b1afdfdcf
 }
 
 bool PlannerNode::isLineInCollision(const Eigen::Vector3d& start, const Eigen::Vector3d& end) {
     // check for collisions in the line joining start and end
     // using getMapDistance and robot_radius
     // in increments of voxel size
+<<<<<<< HEAD
     double distance = (end - start).norm();
     if (distance < voxel_size_) {
         return false;
@@ -157,10 +196,13 @@ bool PlannerNode::isLineInCollision(const Eigen::Vector3d& start, const Eigen::V
     }
     return false;
 
+=======
+>>>>>>> 192e2ac5b02d5d3ed07c7ccc4667e02b1afdfdcf
 }
 
 void PlannerNode::shortenPath() {
     // clear existing short_path_
+<<<<<<< HEAD
     if (short_path_.empty()) {
         return;
     }
@@ -210,6 +252,13 @@ PlannerNode::PlannerNode(ros::NodeHandle& nh, ros::NodeHandle& nh_private)
     path_pub_ = nh.advertise<geometry_msgs::PoseArray>("/seqOfWayPoints", 100);
     PlannerNode::planner_server_ = nh_private.advertiseService("plan",plannerServiceCallback,this);
     //publish_server_ = nh_private.advertiseService("publish_path", &PlannerNode::publishPathCallback);
+=======
+    // use the collision checker on A* generated path
+}
+
+double PlannerNode::getMapDistance(const Eigen::Vector3d& position) {
+    // call the server's method and return the distance at input point.
+>>>>>>> 192e2ac5b02d5d3ed07c7ccc4667e02b1afdfdcf
 }
 
 }  // namespace rover::planner
