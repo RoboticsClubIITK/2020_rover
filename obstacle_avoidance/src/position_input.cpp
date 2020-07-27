@@ -74,7 +74,7 @@ while(ros::ok()){
         }
     }
     
-    if(flag.data==0){pub.publish(velocity);}
+    if(flag.data==0){pub.publish(velocity);}  //case of no obstacle , subscribing the flag posiion from topic 'flag_topic'
     loopRate.sleep();
 }
 return 0;

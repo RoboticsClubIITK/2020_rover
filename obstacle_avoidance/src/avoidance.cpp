@@ -12,6 +12,8 @@
 using namespace std;
 geometry_msgs::Twist velocity;
 std_msgs::Int32 flag;
+float min_distance;
+
 void move_fwd(){
     velocity.linear.x=500;
     velocity.angular.z=0;
@@ -23,16 +25,17 @@ void move_right(){
      
 }
 void lidar_callback(sensor_msgs::LaserScan laser_data){
-    float range_max= laser_data.range_max;
+    float range_max= laser_data.range_max;   //4.5 m
+    float range_min= laser_data.range_min;   //0.45 m
     flag.data=0;
-    flag1.data=0;
-
-    float min=range_max;
+    
+    min_distance=range_max;
     for(int i=0;i<360;i++){
-        if((laser_data.ranges[i]<range_max)&&(laser_data.ranges[i]>0.40)&&(laser_data.ranges[i]<4.0) ) 
+        if((laser_data.ranges[i]<range_max)&&(laser_data.ranges[i]>range_min))
         {   flag.data=1;
-            int index=i;
-            if(laser_data.ranges[i]<min) min=laser_data.ranges[i];
+            
+            if(laser_data.ranges[i]<min_distance) min_distance=laser_data.ranges[i];
+            
         }
     }
        
@@ -43,14 +46,16 @@ ros::NodeHandle nh;
 double rate;
 nh.getParam("rate",rate);
 ros::Subscriber sub = nh.subscribe("rover/scan",10, lidar_callback);
-ros::Publisher pub_flag = nh.advertise<std_msgs::Int32>("flag_topic",10);
+ros::Publisher pub_flag = nh.advertise<std_msgs::Int32>("flag_topic",10);  
 ros::Publisher pub_vel = nh.advertise<geometry_msgs::Twist>("input_topic",10);
 ros::Rate loopRate(rate);
 while(ros::ok()){
     ros::spinOnce();
     cout<<"flag="<<flag.data<<"\n";
-    pub_flag.publish(flag);
-    if(flag.data==1) {
+
+    pub_flag.publish(flag);          //publishes the state of the flag at the moment , if flag==0 then control transfers to velocity_controller node
+    
+    if(flag.data==1) {               // if flag==1 then it follows the avoidance mechanism
         move_right();
         pub_vel.publish(velocity);
         loopRate.sleep();
