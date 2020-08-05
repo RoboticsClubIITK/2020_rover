@@ -1,35 +1,9 @@
 <?xml version="1.0"?>
 <launch>
-
     <arg name="rover_name" default="rover"/>
 
-    <!-- <arg name="world" default="$(find obstacle_avoidance)/worlds/aruco.world"/> -->
-    <arg name="world" default="$(find obstacle_avoidance)/worlds/obstacle.world"/>
-    <node pkg="obstacle_avoidance" type="vel_control" name="vel_control" output="screen"/>
-    <node pkg="obstacle_avoidance" type="lidar_control" name="lidar_control" output="screen"/>
-   <node pkg="obstacle_avoidance" type="pose_control" name="pose_control" output="screen"/>
-   <rosparam file="$(find obstacle_avoidance)/config/params.yaml"/>
-    <arg name="paused" default="false"/>
-	<arg name="use_sim_time" default="true"/>
-	<arg name="gui" default="true"/>
-	<arg name="headless" default="false"/>
-    <arg name="debug" default="false"/>
-    <arg name="verbose" default="false"/>
+    <group ns="$(arg rover_name)">
+        <node pkg="obstacle_avoidance" type="lidar_control" name="lidar_control" output="screen"/>
+    </group>
 
-    <env name="GAZEBO_MODEL_PATH"       value="${GAZEBO_MODEL_PATH}:$(find obstacle_avoidance)/models"/>
-    <env name="GAZEBO_RESOURCE_PATH"    value="${GAZEBO_RESOURCE_PATH}:$(find obstacle_avoidance)/models"/>
-
-    <include file="$(find gazebo_ros)/launch/empty_world.launch">
-		<arg name="world_name" value="$(arg world)"/>
-		<arg name="debug" value="$(arg debug)" />
-        <arg name="gui" value="$(arg gui)" />
-        <arg name="verbose" default="true"/>
-		<arg name="paused" value="$(arg paused)"/>
-		<arg name="use_sim_time" value="$(arg use_sim_time)"/>
-		<arg name="headless" value="$(arg headless)"/>
-    </include>
-
-    <include file="$(find obstacle_avoidance)/launch/spawn_rover.launch">
-        <arg name="rover_name" default="$(arg rover_name)"/>
-    </include>
 </launch>
