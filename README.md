@@ -1,6 +1,32 @@
 # 2020_rover
 Summer Project 2020
+<<<<<<< HEAD
+# To run the project use:
 
+To launch the simulation
+  ```bash
+  roslaunch rover_sim defalut.launch
+  ```
+  
+To launch the all nodes of driver to move to a cetain point in plane(point to be specified in action.cpp)
+  ```bash
+  roslaunch rover_driver default.launch
+  ```  
+To launch the aruco detection
+   ```bash
+   roslaunch rover_aruco default.launch
+   ```
+for the forward command
+  ```bash
+  rosrun rover_driver forward(Press Entre)-> entre the forward speed: ($required speed)
+  ```
+for turn command
+  ```bash
+  rosrun rover_driver turn(Press Entre)-> entre the turn speed: ($required speed)
+  ```
+=======
+
+>>>>>>> 192e2ac5b02d5d3ed07c7ccc4667e02b1afdfdcf
 ## Setup and Installation
 
 Ensure that you have a working ROS Melodic installation.
