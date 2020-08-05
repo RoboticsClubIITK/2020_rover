@@ -30,5 +30,6 @@
     <include file="$(find rover_sim)/launch/spawn_mav.launch">
         <param name="mav_name" value="$(arg mav_name)"/>
     </include>
+  
     <include file="$(find rover_sim)/launch/voxblox.launch"/>
 </launch>
