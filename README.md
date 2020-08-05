@@ -25,8 +25,9 @@ You can either clone this repository directory or use your own personal fork(rec
 cd ~/rover_ws/src
 git clone https://github.com/RoboticsClubIITK/2020_rover
 ```
+To run the voxblox planner, install [Voxblox](https://github.com/ethz-asl/voxblox) and its dependencies in the same workspace.
 
-Build all packages in the workspace using `catkin build`.
+Build all packages in the workspace using `catkin build 2020_rover`.
 
 ## Usage
 
