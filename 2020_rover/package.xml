@@ -1,0 +1,26 @@
+<package>
+    <name>2020_rover</name>
+    <version>1.0.0</version>
+    <description>Autonomous Navigation in Rough Terrain Environments</description>
+    <maintainer email="ashwins@iitk.ac.in">Ashwin Shenai</maintainer>
+
+    <license>TODO</license>
+
+    <buildtool_depend>catkin</buildtool_depend>
+
+    <!-- Add packages as run dependencies below -->
+    <run_depend>rover_sim</run_depend>
+    <run_depend>rover_control</run_depend>
+    <run_depend>rover_assign1</run_depend>
+    <run_depend>rover_aruco_detector</run_depend>
+    <run_depend>aruco_controller</run_depend>
+    <run_depend>box_detect</run_depend>
+    <run_depend>obstacle_avoidance</run_depend>
+    <run_depend>rover_controller</run_depend>
+    <run_depend>voxblox_local_planner</run_depend>
+    <run_depend>voxblox_planner</run_depend>
+
+    <export>
+        <metapackage/>
+    </export>
+</package>
