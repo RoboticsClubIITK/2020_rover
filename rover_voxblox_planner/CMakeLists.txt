@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 2.8)
-project(voxblox_planner)
+project(rover_voxblox_planner)
 
 find_package(catkin_simple REQUIRED)
 catkin_simple(ALL_DEPS_REQUIRED)
