@@ -7,8 +7,10 @@
     </description>
 
     <author email="ashwins@iitk.ac.in">Ashwin Shenai</author>
+    <author email="sanjasyso@iitk.ac.in">Sanjay Sukumaran</author>
 
     <maintainer email="ashwins@iitk.ac.in">Ashwin Shenai</maintainer>
+    <maintainer email="sanjasyso@iitk.ac.in">Sanjay Sukumaran</maintainer>
 
     <license>TODO</license>
 
@@ -20,6 +22,8 @@
     <depend>mav_msgs</depend>
     <depend>std_srvs</depend>
     <depend>std_msgs</depend>
+    <depend>geometry_msgs</depend>
+    <depend>nav_msgs</depend>
     <depend>mav_planning_msgs</depend>
 
 </package>
