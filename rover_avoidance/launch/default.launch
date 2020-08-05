@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<launch>
+    <arg name="rover_name" default="rover"/>
+
+    <group ns="$(arg rover_name)">
+        <node pkg="obstacle_avoidance" type="lidar_control" name="lidar_control" output="screen"/>
+    </group>
+
+</launch>

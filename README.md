@@ -1,32 +1,5 @@
 # 2020_rover
-Summer Project 2020
-<<<<<<< HEAD
-# To run the project use:
 
-To launch the simulation
-  ```bash
-  roslaunch rover_sim defalut.launch
-  ```
-  
-To launch the all nodes of driver to move to a cetain point in plane(point to be specified in action.cpp)
-  ```bash
-  roslaunch rover_driver default.launch
-  ```  
-To launch the aruco detection
-   ```bash
-   roslaunch rover_aruco default.launch
-   ```
-for the forward command
-  ```bash
-  rosrun rover_driver forward(Press Entre)-> entre the forward speed: ($required speed)
-  ```
-for turn command
-  ```bash
-  rosrun rover_driver turn(Press Entre)-> entre the turn speed: ($required speed)
-  ```
-=======
-
->>>>>>> 192e2ac5b02d5d3ed07c7ccc4667e02b1afdfdcf
 ## Setup and Installation
 
 Ensure that you have a working ROS Melodic installation.
@@ -52,8 +25,9 @@ You can either clone this repository directory or use your own personal fork(rec
 cd ~/rover_ws/src
 git clone https://github.com/RoboticsClubIITK/2020_rover
 ```
+To run the voxblox planner, install [Voxblox](https://github.com/ethz-asl/voxblox) and its dependencies in the same workspace.
 
-Build all packages in the workspace using `catkin build`.
+Build all packages in the workspace using `catkin build 2020_rover`.
 
 ## Usage
 
@@ -95,3 +69,4 @@ git push origin master    # Push local changes to GitHub
 ## Credits
 
 Meshes and Gazebo objects sourced from https://github.com/Christopheraburns/AWS-JPL-OSR-Challenge
+We used [Voxblox](https://github.com/ethz-asl/voxblox) for TSDF generation for path planning.

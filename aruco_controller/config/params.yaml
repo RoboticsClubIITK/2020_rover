@@ -1,7 +1,0 @@
-linear_vel: 10
-ang_vel: 60
-debug: true
-overlay: true
-rate: 10
-h_min: 80
-h_max: 100

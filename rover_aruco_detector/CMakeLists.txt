@@ -13,16 +13,11 @@ include_directories(${Eigen3_INCLUDE_DIRS})
 add_definitions(-std=c++17)
 set(CMAKE_BUILD_TYPE Release)
 
-cs_add_library(aruco_centre_lib src/aruco_centre.cpp)
 cs_add_library(aruco_marker_detect_lib src/aruco_marker_detect.cpp)
 cs_add_library(pose_estimation_lib src/pose_estimation.cpp)
 
-cs_add_executable(aruco_centre_node src/aruco_centre_node.cpp)
 cs_add_executable(aruco_marker_detect_node src/aruco_marker_detect_node.cpp)
-target_link_libraries(aruco_centre_node aruco_centre_lib)
-target_link_libraries(aruco_centre_node ${OpenCV_LIBRARIES})
-target_link_libraries(aruco_marker_detect_node aruco_marker_detect_lib)
-target_link_libraries(aruco_marker_detect_node ${OpenCV_LIBRARIES})
+target_link_libraries(aruco_marker_detect_node aruco_marker_detect_lib ${OpenCV_LIBRARIES})
 
 cs_add_executable(pose_estimation_node src/pose_estimation_node.cpp)
 target_link_libraries(pose_estimation_node pose_estimation_lib)

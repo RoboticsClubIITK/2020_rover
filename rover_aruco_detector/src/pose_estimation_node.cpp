@@ -19,6 +19,6 @@ int main(int argc, char** argv) {
         ros::spinOnce();
         pose_est.run();
     }
-    
+
     return 0;
 }
