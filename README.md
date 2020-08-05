@@ -1,28 +1,4 @@
 # 2020_rover
-Summer Project 2020
-# To run the project use:
-
-To launch the simulation
-  ```bash
-  roslaunch rover_sim defalut.launch
-  ```
-
-To launch the all nodes of driver to move to a cetain point in plane(point to be specified in action.cpp)
-  ```bash
-  roslaunch rover_driver default.launch
-  ```
-To launch the aruco detection
-   ```bash
-   roslaunch rover_aruco default.launch
-   ```
-for the forward command
-  ```bash
-  rosrun rover_driver forward(Press Entre)-> entre the forward speed: ($required speed)
-  ```
-for turn command
-  ```bash
-  rosrun rover_driver turn(Press Entre)-> entre the turn speed: ($required speed)
-  ```
 
 ## Setup and Installation
 
@@ -92,3 +68,4 @@ git push origin master    # Push local changes to GitHub
 ## Credits
 
 Meshes and Gazebo objects sourced from https://github.com/Christopheraburns/AWS-JPL-OSR-Challenge
+We used [Voxblox](https://github.com/ethz-asl/voxblox) for TSDF generation for path planning.

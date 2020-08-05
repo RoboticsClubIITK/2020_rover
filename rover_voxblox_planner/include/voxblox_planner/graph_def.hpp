@@ -1,21 +1,22 @@
 #pragma once
 
 #include <Eigen/Core>
-#include <memory>
 #include <Eigen/Eigen>
 #include <boost/geometry.hpp>
 #include <boost/geometry/geometries/point.hpp>
 #include <boost/geometry/index/rtree.hpp>
+#include <memory>
 
 namespace rover::planner {
 
 class GraphNode {
-    public:
+  public:
     typedef std::shared_ptr<GraphNode> Ptr;
     GraphNode(const Eigen::Vector3d& pos, const uint& id)
         : pos_(pos)
-        , id_(id){}
-    
+        , id_(id) {
+    }
+
     uint getID() {
         return id_;
     }
@@ -45,12 +46,12 @@ class GraphNode {
         }
     }
 
-    private:
+  private:
     std::vector<GraphNode::Ptr> neighbours_;
     Eigen::Vector3d pos_;
-    uint  state_;
+    uint state_;
     uint id_;
-} ;
+};
 
 typedef GraphNode::Ptr Node;
 typedef std::vector<Node> Graph;

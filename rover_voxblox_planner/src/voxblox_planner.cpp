@@ -6,9 +6,9 @@ PlannerNode::PlannerNode(ros::NodeHandle& nh, ros::NodeHandle& nh_private)
     : sampler_()
     , server_(nh, nh_private)
     , p_sample_(10) {
-    planner_server_= nh_private.advertiseService("plan", &PlannerNode::plannerServiceCallback, this);
-    publish_server_= nh_private.advertiseService("publish_path", &PlannerNode::publishPathCallback, this);
-    path_pub_= nh.advertise<geometry_msgs::PoseArray>("waypoint_list", 1);
+    planner_server_ = nh_private.advertiseService("plan", &PlannerNode::plannerServiceCallback, this);
+    publish_server_ = nh_private.advertiseService("publish_path", &PlannerNode::publishPathCallback, this);
+    path_pub_ = nh.advertise<geometry_msgs::PoseArray>("waypoint_list", 1);
     nh_private.getParam("num_neighbours", num_neighbours_);
     nh_private.getParam("robot_radius", robot_radius_);
     voxel_size_ = double(server_.getEsdfMapPtr()->voxel_size());
@@ -20,10 +20,10 @@ bool PlannerNode::plannerServiceCallback(mav_planning_msgs::PlannerServiceReques
     mav_msgs::EigenTrajectoryPoint start_pose, end_pose;
     mav_msgs::eigenTrajectoryPointFromPoseMsg(req.start_pose, &start_pose);
     mav_msgs::eigenTrajectoryPointFromPoseMsg(req.goal_pose, &end_pose);
-    Eigen::Vector3d start=start_pose.position_W,end=end_pose.position_W;
-    ROS_INFO("start point x: %lf y: %lf  \n end point x: %lf y: %lf  ",start(0),start(1),end(0),end(1));
-    createGraph(start,end);
-    findPath(graph_.front()->getID(),graph_.back()->getID());
+    Eigen::Vector3d start = start_pose.position_W, end = end_pose.position_W;
+    ROS_INFO("start point x: %lf y: %lf  \n end point x: %lf y: %lf  ", start(0), start(1), end(0), end(1));
+    createGraph(start, end);
+    findPath(graph_.front()->getID(), graph_.back()->getID());
     shortenPath();
     return true;
 }
@@ -34,10 +34,10 @@ bool PlannerNode::publishPathCallback(std_srvs::EmptyRequest& req, std_srvs::Emp
     geometry_msgs::PoseArray pose_array;
     geometry_msgs::Pose pos_;
     pose_array.poses.reserve(short_path_.size());
-    for(int i=0;i<int(short_path_.size());i++){
-        pos_.position.x=short_path_[i](0);
-        pos_.position.y=short_path_[i](1);
-        pos_.position.z=short_path_[i](2);
+    for (int i = 0; i < int(short_path_.size()); i++) {
+        pos_.position.x = short_path_[i](0);
+        pos_.position.y = short_path_[i](1);
+        pos_.position.z = short_path_[i](2);
         pose_array.poses.push_back(pos_);
     }
     path_pub_.publish(pose_array);
@@ -66,9 +66,9 @@ void PlannerNode::createGraph(const Eigen::Vector3d& start, const Eigen::Vector3
     uint node_id = 2;
     while (num_sample++ < max_samples) {
         Eigen::Vector3d sample = sampler_.generateSample();
-        sample(2)= 1;//making height of sample point below the rover's height
+        sample(2) = 1;  // making height of sample point below the rover's height
         double distance = getMapDistance(sample);
-        if ( distance && distance >= robot_radius) {
+        if (distance && distance >= robot_radius) {
             graph_.push_back(Node(new GraphNode(sample, node_id++)));
         }
     }
@@ -112,7 +112,7 @@ void PlannerNode::findPath(const uint& start_index, const uint& end_index) {
         uint curr_index = open_set.top().second;
         Eigen::Vector3d curr_pos = graph_[curr_index]->getPosition();
         open_set.pop();
-        if (curr_index -end_index >-15) {
+        if (curr_index - end_index > -15) {
             Path curr_path;
             while (parent[curr_index] != INT_MAX) {
                 curr_path.push_back(graph_[curr_index]->getPosition());
@@ -146,7 +146,8 @@ void PlannerNode::shortenPath() {
     }
     short_path_.clear();
     std::vector<bool> retain(raw_path_.size(), true);
-    if(raw_path_.size()>20) findMaximalIndices(0, raw_path_.size() - 1, &retain);//shorten path only if it's size is greater than 20
+    if (raw_path_.size() > 20)
+        findMaximalIndices(0, raw_path_.size() - 1, &retain);  // shorten path only if it's size is greater than 20
     ROS_INFO("Working after findMaximal function");
     for (uint i = 0; i < raw_path_.size(); i++) {
         if (retain[i])
@@ -175,7 +176,7 @@ bool PlannerNode::isLineInCollision(const Eigen::Vector3d& start, const Eigen::V
     // check for collisions in the line joining start and end
     // using getMapDistance and robot_radius
     // in increments of voxel size
-    //ROS_INFO("isLineInCollision called");
+    // ROS_INFO("isLineInCollision called");
     double distance = (end - start).norm();
     if (distance < voxel_size_) {
         return false;
@@ -202,15 +203,14 @@ bool PlannerNode::isLineInCollision(const Eigen::Vector3d& start, const Eigen::V
     return false;
 }
 
-double PlannerNode::getMapDistance(const Eigen::Vector3d& position){
-  if (!server_.getEsdfMapPtr()) {
-    return 0.0;
-  }
-  double distance = 0.0;
-  if (!server_.getEsdfMapPtr()->getDistanceAtPosition(position,
-                                                    &distance)) {
-    return 0.0;
-  }
-  return distance;
+double PlannerNode::getMapDistance(const Eigen::Vector3d& position) {
+    if (!server_.getEsdfMapPtr()) {
+        return 0.0;
+    }
+    double distance = 0.0;
+    if (!server_.getEsdfMapPtr()->getDistanceAtPosition(position, &distance)) {
+        return 0.0;
+    }
+    return distance;
 }
 }  // namespace rover::planner

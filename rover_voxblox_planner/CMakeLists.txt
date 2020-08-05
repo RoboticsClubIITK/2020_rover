@@ -10,10 +10,10 @@ find_package(Boost REQUIRED)
 add_definitions(-std=c++17)
 set(CMAKE_BUILD_TYPE=Release)
 
-cs_add_library(${PROJECT_NAME}_lib src/point_sampler.cpp src/${PROJECT_NAME}.cpp src/publish_waypoint.cpp)
+cs_add_library(${PROJECT_NAME}_lib src/point_sampler.cpp src/voxblox_planner.cpp src/publish_waypoint.cpp)
 target_link_libraries(${PROJECT_NAME}_lib ${BOOST_LIBRARIES} ${Eigen3_LIBRARIES})
 
-cs_add_executable(${PROJECT_NAME}_node src/${PROJECT_NAME}_node.cpp)
+cs_add_executable(${PROJECT_NAME}_node src/voxblox_planner_node.cpp)
 target_link_libraries(${PROJECT_NAME}_node ${PROJECT_NAME}_lib)
 
 cs_add_executable(publish_waypoint_node src/publish_waypoint_node.cpp)

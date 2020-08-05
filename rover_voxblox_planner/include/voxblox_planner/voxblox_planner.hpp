@@ -1,15 +1,15 @@
 #pragma once
 
 #include <Eigen/Core>
-#include <mav_planning_msgs/PlannerService.h>
+#include <geometry_msgs/Pose.h>
+#include <geometry_msgs/PoseArray.h>
 #include <mav_msgs/conversions.h>
+#include <mav_planning_msgs/PlannerService.h>
 #include <ros/ros.h>
 #include <std_srvs/Empty.h>
 #include <voxblox_planner/graph_def.hpp>
 #include <voxblox_planner/point_sampler.hpp>
 #include <voxblox_ros/esdf_server.h>
-#include <geometry_msgs/PoseArray.h>
-#include <geometry_msgs/Pose.h>
 
 namespace rover::planner {
 
