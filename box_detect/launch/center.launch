@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<launch>
+<node pkg="box_detect" type="box_detect_node" name="box_detect_node" output="screen"/>
+</launch>

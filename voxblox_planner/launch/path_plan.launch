@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<launch>
+
+<include file="$(find rover_position_control)/launch/rover_pose_control.launch"/>
+
+<arg name="mav_name" default="firefly"/>
+
+<group ns="$(arg mav_name)">
+    <node pkg="voxblox_planner" type="voxblox_planner_node" name="voxblox_planner_node" output="screen">
+        <rosparam file="$(find voxblox_planner)/config/planner.yaml"/>
+        <remap from="voxblox_planner_node/esdf_map_in" to="esdf_map" />
+        <remap from="voxblox_planner_node/tsdf_map_in" to="tsdf_map" />
+    </node>
+</group>
+    
+<node pkg="voxblox_planner" type="publish_waypoint_node" name="publish_waypoint_node" output="screen">
+</node>
+
+</launch>
